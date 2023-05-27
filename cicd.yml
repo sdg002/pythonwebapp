@@ -1,0 +1,53 @@
+
+
+variables:
+- name: MajorVersion
+  value: 1
+- name: MinorVersion
+  value: 0
+- name: PatchNumber
+  value: 0
+
+name: $(MajorVersion).$(MinorVersion).$(PatchNumber).$(Rev:r)
+
+
+stages:
+- stage: BUILD
+  jobs:
+  - job: Build job
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline' # 'filePath' | 'inline'. Type. Default: filePath.
+        pwsh: true
+        script: | 
+          Write-Host "Inside Build task" 
+          Write-Host "Displaying environment variables" 
+          dir env:
+
+
+- stage: DEV-DEPLOY
+  dependsOn: BUILD
+  jobs:
+  - job: Deploy job
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline' # 'filePath' | 'inline'. Type. Default: filePath.
+        pwsh: true
+        script: | 
+          Write-Host "Inside Deploy job" 
+          Write-Host "Displaying environment variables" 
+          dir env:
+
+- stage: PROD-DEPLOY
+  dependsOn: DEV-DEPLOY
+  condition: eq(variables['build.sourceBranch'], 'refs/heads/main')
+  jobs:
+  - job: Deploy job
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline' # 'filePath' | 'inline'. Type. Default: filePath.
+        pwsh: true
+        script: | 
+          Write-Host "Inside Deploy job" 
+          Write-Host "Displaying environment variables" 
+          dir env:
