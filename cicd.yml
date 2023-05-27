@@ -26,7 +26,7 @@ stages:
           dir env:
 
 
-- stage: DEV-DEPLOY
+- stage: DEV_DEPLOY
   dependsOn: BUILD
   variables: 
   - name: environment
@@ -40,8 +40,8 @@ stages:
         filePath: devops/deploy.ps1
         pwsh: true
 
-- stage: PROD-DEPLOY
-  dependsOn: DEV-DEPLOY
+- stage: PROD_DEPLOY
+  dependsOn: DEV_DEPLOY
   condition: eq(variables['build.sourceBranch'], 'refs/heads/main')
   variables: 
   - name: environment
