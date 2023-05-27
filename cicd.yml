@@ -14,7 +14,7 @@ name: $(MajorVersion).$(MinorVersion).$(PatchNumber).$(Rev:r)
 stages:
 - stage: BUILD
   jobs:
-  - job: Build job
+  - job: BuildJob
     steps:
     - task: PowerShell@2
       inputs:
@@ -32,7 +32,7 @@ stages:
   - name: environment
     value: dev
   jobs:
-  - job: Deploy job
+  - job: DeployJob
     steps:
     - task: PowerShell@2
       inputs:
@@ -47,7 +47,7 @@ stages:
   - name: environment
     value: prod
   jobs:
-  - job: Deploy job
+  - job: DeployJob
     steps:
     - task: PowerShell@2
       inputs:
