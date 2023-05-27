@@ -39,6 +39,11 @@ stages:
         targetType: 'filePath'
         filePath: devops/deploy.ps1
         pwsh: true
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.9'
+        addToPath: true 
+
 
 - stage: PROD_DEPLOY
   dependsOn: DEV_DEPLOY
