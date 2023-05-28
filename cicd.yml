@@ -30,8 +30,15 @@ stages:
       displayName: 'Create a ZIP of the Python web app source'
       inputs:
         rootFolderOrFile: 'webfrontend'
-        archiveFile: '$(Build.ArtifactStagingDirectory)/webappsourcecode-$(Build.BuildNumber).zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/webappsourcecode/$(Build.BuildNumber).zip'
         verbose: true
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Python source code'
+      inputs:
+        PathtoPublish: '$(build.artifactstagingdirectory)/webappsourcecode'
+        ArtifactName: 'webappsourcecode'
+
 
 - stage: DEV_DEPLOY
   dependsOn: BUILD
@@ -39,18 +46,7 @@ stages:
   - name: environment
     value: dev
   jobs:
-  - job: DeployJob
-    steps:
-    - task: PowerShell@2
-      inputs:
-        targetType: 'filePath'
-        filePath: devops/deploy.ps1
-        pwsh: true
-    - task: UsePythonVersion@0
-      displayName: 'Deploy to DEV'
-      inputs:
-        versionSpec: '3.9'
-        addToPath: true 
+  - template:devops/webapp-deploy-template.yaml
 
 
 - stage: PROD_DEPLOY
@@ -60,11 +56,4 @@ stages:
   - name: environment
     value: prod
   jobs:
-  - job: DeployJob
-    steps:
-    - task: PowerShell@2
-      displayName: 'Deploy to PROD'
-      inputs:
-        targetType: 'filePath'
-        filePath: devops/deploy.ps1
-        pwsh: true
+  - template:devops/webapp-deploy-template.yaml
