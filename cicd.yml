@@ -1,4 +1,5 @@
-
+pool:
+  vmImage: ubuntu-latest
 
 variables:
 - name: MajorVersion
@@ -40,6 +41,7 @@ stages:
         filePath: devops/deploy.ps1
         pwsh: true
     - task: UsePythonVersion@0
+      displayName: 'Deploy to DEV'
       inputs:
         versionSpec: '3.9'
         addToPath: true 
@@ -55,6 +57,7 @@ stages:
   - job: DeployJob
     steps:
     - task: PowerShell@2
+      displayName: 'Deploy to PROD'
       inputs:
         targetType: 'filePath'
         filePath: devops/deploy.ps1
