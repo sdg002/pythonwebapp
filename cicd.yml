@@ -46,7 +46,7 @@ stages:
   - name: environment
     value: dev
   jobs:
-  - template:devops/webapp-deploy-template.yaml
+  - template: devops/webapp-deploy-template.yaml
 
 
 - stage: PROD_DEPLOY
@@ -56,4 +56,4 @@ stages:
   - name: environment
     value: prod
   jobs:
-  - template:devops/webapp-deploy-template.yaml
+  - template: devops/webapp-deploy-template.yaml
