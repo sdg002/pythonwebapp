@@ -26,6 +26,12 @@ stages:
           Write-Host "Displaying environment variables" 
           dir env:
 
+    - task: ArchiveFiles@2
+      displayName: 'Create a ZIP of the Python web app source'
+      inputs:
+        rootFolderOrFile: 'webfrontend'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/webappsourcecode-$(Build.BuildNumber).zip'
+        verbose: true
 
 - stage: DEV_DEPLOY
   dependsOn: BUILD
