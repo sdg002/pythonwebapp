@@ -2,11 +2,6 @@
   - job: DeployJob
     displayName: 'Deploy job-$(ENVIRONMENT)'
     steps:
-    - task: PowerShell@2
-      inputs:
-        targetType: 'filePath'
-        filePath: devops/deploy.ps1
-        pwsh: true
 
     - task: DownloadPipelineArtifact@2
       displayName: 'Download Web App Source code artifact'
@@ -16,9 +11,8 @@
         targetPath: '$(Pipeline.Workspace)/webappsourcecode'
 
     - task: PowerShell@2
-      displayName: 'PowerShell - display contents'
+      displayName: 'Deploy web app $(ENVIRONMENT)'
       inputs:
-        targetType: 'inline'
-        script: |
-          dir $(Pipeline.Workspace)
+        targetType: 'filePath'
+        filePath: devops/deploy.ps1
         pwsh: true
