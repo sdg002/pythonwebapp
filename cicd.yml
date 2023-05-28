@@ -8,6 +8,8 @@ variables:
   value: 0
 - name: PatchNumber
   value: 0
+- name: PythonVersion
+  value: 3.9
 
 name: $(MajorVersion).$(MinorVersion).$(PatchNumber).$(Rev:r)
 
@@ -25,6 +27,12 @@ stages:
           Write-Host "Inside Build task" 
           Write-Host "Displaying environment variables" 
           dir env:
+
+    - task: UsePythonVersion@0
+      displayName: 'Install Python $(PythonVersion)'
+      inputs:
+        versionSpec: $(PythonVersion)
+        addToPath: true 
 
     - task: ArchiveFiles@2
       displayName: 'Create a ZIP of the Python web app source'
