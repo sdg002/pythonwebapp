@@ -8,7 +8,13 @@
       inputs:
         buildType: 'current' 
         artifactName: 'webappsourcecode'
-        targetPath: '$(Pipeline.Workspace)/webappsourcecode'
+        targetPath: '$(Pipeline.Workspace)/webappsourcecode-zip'
+
+    - task: ExtractFiles@1
+      displayName: 'Extract source files'
+      inputs:
+        archiveFilePatterns: $(Pipeline.Workspace)/webappsourcecode-zip/*.zip
+        destinationFolder: $(Pipeline.Workspace)/webappsourcecode-extract/
 
     - task: PowerShell@2
       displayName: 'Deploy web app $(ENVIRONMENT)'
