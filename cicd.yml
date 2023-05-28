@@ -34,7 +34,7 @@ variables:
 - name: PythonVersion
   value: 3.9
 - name: AzureServiceAccount
-  value: 'azure pay as you go demo (sep 21)''
+  value: 'azure pay as you go demo (sep 21)'
 
 name: $(MajorVersion).$(MinorVersion).$(PatchNumber).$(Rev:r)
 
