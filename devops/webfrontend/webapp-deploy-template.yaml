@@ -16,9 +16,11 @@
         archiveFilePatterns: $(Pipeline.Workspace)/webappsourcecode-zip/*.zip
         destinationFolder: $(Pipeline.Workspace)/webappsourcecode-extract/
 
-    - task: PowerShell@2
+    - task: AzureCLI@2
       displayName: 'Deploy web app $(ENVIRONMENT)'
       inputs:
-        targetType: 'filePath'
-        filePath: devops/webfrontend/deploy.ps1
-        pwsh: true
+        azureSubscription: $(AzureServiceAccount)
+        scriptType: pscore
+        scriptPath: devops/webfrontend/deploy.ps1
+        addSpnToEnvironment: true
+  

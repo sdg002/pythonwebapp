@@ -3,9 +3,11 @@ trigger:
     include:
     - main
   paths:
+    exclude:
+    - docs/*
     include:
-      - 'webfrontend/'
-      - 'devops/webfrontend/'
+    - webfrontend/
+    - devops/webfrontend/
 
 pr:
   branches:
@@ -15,6 +17,9 @@ pr:
   paths:
     exclude:
     - /docs/*
+    include:
+    - webfrontend/
+    - devops/webfrontend/
 
 pool:
   vmImage: ubuntu-latest
@@ -28,6 +33,8 @@ variables:
   value: 0
 - name: PythonVersion
   value: 3.9
+- name: AzureServiceAccount
+  value: 'azure pay as you go demo (sep 21)'
 
 name: $(MajorVersion).$(MinorVersion).$(PatchNumber).$(Rev:r)
 
