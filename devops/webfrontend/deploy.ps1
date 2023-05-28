@@ -41,6 +41,22 @@ Write-Host "Going to create a web app using ARM template $armTemplateFile"
 
 RaiseCliError -message "Failed to deploy web app $Global:WebAppName"
 
+<#
+Deploy the Python code
+#>
+Write-Host "Going to deploy upload Python code to the web app $Global:WebAppName"
+$SourceFolder="webfrontend"
+$SourceCodeLocaiton = Join-Path -Path $PSScriptRoot -ChildPath "../../$SourceFolder"
+
+$DotAzureFolder=Join-Path -Path $SourceCodeLocaiton -ChildPath ".azure"  #This is a cache folder created by Azure Cli
+if (Test-Path -Path $DotAzureFolder){
+    Remove-Item -Path $DotAzureFolder -Recurse -Force -Verbose
+}
+
+Write-Host "The Python code will be deployed from the location $SourceCodeLocaiton"
+Push-Location -Path $SourceCodeLocaiton
+az webapp up --name $Global:WebAppName
+Pop-Location
 
 Write-Host "Going to deploy. to be done"
 Write-Host "Displaying environment variables"
