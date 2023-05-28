@@ -3,6 +3,8 @@ trigger:
     include:
     - main
   paths:
+    exclude:
+    - /docs/*
     include:
       - 'webfrontend/'
       - 'devops/webfrontend/'
@@ -15,6 +17,9 @@ pr:
   paths:
     exclude:
     - /docs/*
+    include:
+      - 'webfrontend/'
+      - 'devops/webfrontend/'
 
 pool:
   vmImage: ubuntu-latest
