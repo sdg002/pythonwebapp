@@ -1,3 +1,21 @@
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+      - 'webfrontend/'
+      - 'devops/webfrontend/'
+
+pr:
+  branches:
+    include:
+    - feature/*
+
+  paths:
+    exclude:
+    - /docs/*
+
 pool:
   vmImage: ubuntu-latest
 
@@ -55,7 +73,7 @@ stages:
   - name: environment
     value: dev
   jobs:
-  - template: devops/webapp-deploy-template.yaml
+  - template: devops/webfrontend/webapp-deploy-template.yaml
 
 
 - stage: PROD_DEPLOY
@@ -65,4 +83,4 @@ stages:
   - name: environment
     value: prod
   jobs:
-  - template: devops/webapp-deploy-template.yaml
+  - template: devops/webfrontend/webapp-deploy-template.yaml

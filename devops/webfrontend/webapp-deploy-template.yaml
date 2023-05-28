@@ -20,5 +20,5 @@
       displayName: 'Deploy web app $(ENVIRONMENT)'
       inputs:
         targetType: 'filePath'
-        filePath: devops/deploy.ps1
+        filePath: devops/webfrontend/deploy.ps1
         pwsh: true
