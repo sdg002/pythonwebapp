@@ -19,7 +19,7 @@
     - task: AzureCLI@2
       displayName: 'Deploy web app $(ENVIRONMENT)'
       inputs:
-        azureSubscription: 'Pay-As-You-Go-demo (635a2074-cc31-43ac-bebe-2bcd67e1abfe)'
+        azureSubscription: $(AzureServiceAccount)
         scriptType: pscore
         scriptPath: devops/webfrontend/deploy.ps1
         addSpnToEnvironment: true
