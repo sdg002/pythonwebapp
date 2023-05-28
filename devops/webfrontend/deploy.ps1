@@ -26,6 +26,22 @@ Write-Host "Going to create App Service Plan $Global:AppServicePlan using ARM te
     name=$Global:AppServicePlan `
     --verbose
 
+RaiseCliError -message "Failed to create app service plan $Global:AppServicePlan"
+
+<#
+Deploy Web app
+#>
+$armTemplateFile=Join-Path -Path $PSScriptRoot -ChildPath "templates/webapp.arm.template.json"
+$armParameterFile=Join-Path -Path $PSScriptRoot -ChildPath "templates/webapp.arm.parameters.json"
+Write-Host "Going to create a web app using ARM template $armTemplateFile"
+& az deployment group create --resource-group $Global:ResourceGroup --template-file $armTemplateFile `
+    --parameters @$armParameterFile  `
+    name=$Global:WebAppName hostingPlanName=$Global:AppServicePlan `
+    --verbose
+
+RaiseCliError -message "Failed to deploy web app $Global:WebAppName"
+
+
 Write-Host "Going to deploy. to be done"
 Write-Host "Displaying environment variables"
 Write-Host "-------------------"
@@ -34,3 +50,5 @@ Write-Host "-------------------"
 Write-Host "Displaying directory structure"
 Get-ChildItem -Recurse -Path $env:PIPELINE_WORKSPACE  | Select-Object -Property FullName
 Write-Host "-------------------"
+
+
