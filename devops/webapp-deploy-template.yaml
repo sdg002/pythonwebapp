@@ -7,3 +7,18 @@
         targetType: 'filePath'
         filePath: devops/deploy.ps1
         pwsh: true
+
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download Web App Source code artifact'
+      inputs:
+        buildType: 'current' 
+        artifactName: 'webappsourcecode'
+        targetPath: '$(Pipeline.Workspace)/webappsourcecode'
+
+    - task: PowerShell@2
+      displayName: 'PowerShell - display contents'
+      inputs:
+        targetType: 'inline'
+        script: |
+          dir $(Pipeline.Workspace)
+        pwsh: true
