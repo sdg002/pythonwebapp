@@ -14,6 +14,17 @@ Write-Host "Going to create the resource group: '$Global:ResourceGroup' with the
 RaiseCliError -message "Failed to create the resource group $Global:ResourceGroup"
 
 
+<#
+Deploy App Service Plan
+#>
+$armTemplateFile=Join-Path -Path $PSScriptRoot -ChildPath "templates/appserviceplan.arm.template.json"
+$armParameterFile=Join-Path -Path $PSScriptRoot -ChildPath "templates/appserviceplan.arm.parameters.json"
+Write-Host "Going to create App Service Plan $Global:AppServicePlan using ARM template $armTemplateFile"
+& az deployment group create --resource-group $Global:ResourceGroup `
+    --template-file $armTemplateFile `
+    --parameters  @$armParameterFile `
+    name=$Global:AppServicePlan `
+    --verbose
 
 Write-Host "Going to deploy. to be done"
 Write-Host "Displaying environment variables"
