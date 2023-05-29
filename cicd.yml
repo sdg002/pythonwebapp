@@ -80,7 +80,7 @@ stages:
   - name: environment
     value: dev
   jobs:
-  - template: devops/webfrontend/webapp-deploy-template.yaml
+  - template: devops/webfrontend/webapp-release-template.yaml
 
 
 - stage: PROD_DEPLOY
