@@ -37,6 +37,7 @@ Write-Host "Going to create a web app using ARM template $armTemplateFile"
 & az deployment group create --resource-group $Global:ResourceGroup --template-file $armTemplateFile `
     --parameters @$armParameterFile  `
     name=$Global:WebAppName hostingPlanName=$Global:AppServicePlan `
+    environment=$Global:environment `
     --verbose
 
 RaiseCliError -message "Failed to deploy web app $Global:WebAppName"

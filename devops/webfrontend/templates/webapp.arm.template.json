@@ -17,6 +17,10 @@
         "linuxFxVersion": {
             "type": "string"
         }
+        ,
+        "environment":{
+            "type": "string"
+        }
     },
     "variables": {},
     "resources": [
@@ -30,7 +34,12 @@
             "properties": {
                 "name": "[parameters('name')]",
                 "siteConfig": {
-                    "appSettings": [],
+                    "appSettings": [
+                        {
+                            "name" : "ENVIRONMENT",
+                            "value" : "[parameters('environment')]"
+                        }
+                    ],
                     "linuxFxVersion": "[parameters('linuxFxVersion')]",
                     "alwaysOn": "[parameters('alwaysOn')]",
                     "ftpsState": "[parameters('ftpsState')]"
