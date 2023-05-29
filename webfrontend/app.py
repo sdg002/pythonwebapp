@@ -1,8 +1,10 @@
 from flask import Flask
 import datetime
 import re
+from version import version_blue_print
 
 app = Flask(__name__)
+app.register_blueprint(version_blue_print)
 
 @app.route("/")
 def home():
