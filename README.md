@@ -36,7 +36,10 @@ Python Flask Web App
 ---cicd.yml
 ```
 ---
-
+# Next step
+- CICD version in template
+- bootstrap
+---
 
 # Landing page
 - Use bootstrap nav bar
