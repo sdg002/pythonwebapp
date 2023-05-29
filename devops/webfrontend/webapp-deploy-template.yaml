@@ -16,6 +16,14 @@
         archiveFilePatterns: $(Pipeline.Workspace)/webappsourcecode-zip/*.zip
         destinationFolder: $(Pipeline.Workspace)/webappsourcecode-extract/
 
+    - task: PowerShell@2
+      displayName: 'Update version number'
+      inputs:
+        targetType: 'filePath'
+        filePath: devops/webfrontend/replaceverversion.ps1
+        arguments: -version $(Build.BuildNumber) -file webfrontend/application_version.txt
+        pwsh: true
+
     - task: AzureCLI@2
       displayName: 'Deploy web app $(ENVIRONMENT)'
       inputs:
