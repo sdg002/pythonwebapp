@@ -3,7 +3,11 @@ $ErrorActionPreference="Stop"
 
 Set-StrictMode -Version "latest"
 $ErrorActionPreference="Stop"
-$Global:environment="dev"
+$Global:environment=$env:ENVIRONMENT
+if ([string]::IsNullOrWhiteSpace($Global:environment)){
+    Write-Error -Message "The environment variable 'ENVIRONMENT' was not set"
+}
+Write-Host "The environment is $Global:environment"
 $Global:ResourceGroup="rg-python-webapp-$Global:environment-uks"
 $Global:Location="uksouth"
 
