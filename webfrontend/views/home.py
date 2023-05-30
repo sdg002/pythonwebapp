@@ -8,7 +8,11 @@ home_blue_print = Blueprint(name="home", import_name=__name__)
 def home():
     return render_template("home.html")
 
-# @app.route("/")
-# def home():
-#     now = datetime.datetime.now()
-#     return f"Hello, Flask 123 !, now={now}"
+@home_blue_print.route("/link2")
+def link2():
+    return render_template("link2.html")
+
+@home_blue_print.route("/link3")
+def link3():
+    return render_template("link3.html")
+
