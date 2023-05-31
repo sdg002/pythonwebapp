@@ -37,8 +37,49 @@ Python Flask Web App
 ```
 ---
 # Next step
-- CICD version in template
-- bootstrap
+- ~~CICD version in template~~
+- ~~bootstrap~~
+- Simple plot demo
+- Simple bootstrap form submission demo using Flask postback
+- 
+- 
+- 
+---
+
+# Change the folder structure - probable idea
+
+The basic idea 
+- Mono repo approach
+- Every project within the repo has its top level folder
+- Every project has its own **devops** folde
+- Where should you put the **app.py** file and what about **tests** folder
+
+```
+---
+    |
+    |
+    |---webfrontend--|
+    |                |
+    |                |
+    |                |
+    |                |--devops
+    |                |
+    |                |
+    |                |--cicd.yml
+    
+    |
+    |
+    |---sharedinfra--
+    |                |
+    |                |
+    |                |--devops
+    |                |
+    |                |
+    |                |--cicd.yml
+    |
+    |
+    |---comonvariables.ps1
+```
 ---
 
 # Landing page
