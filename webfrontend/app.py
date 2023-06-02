@@ -16,7 +16,10 @@ app.register_blueprint(about_blue_print)
 #app.register_blueprint(plotly_demo_blue_print)
 logging.basicConfig(level=logging.INFO)
 
-from views.plotlydemo import make_dash, make_layout, define_callbacks
+#
+#
+#
+from views.dashdemo1 import make_dash, make_layout, define_callbacks
 dash_app = make_dash(app)
 dash_app.layout = make_layout()
 define_callbacks()

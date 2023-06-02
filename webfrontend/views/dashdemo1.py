@@ -16,13 +16,15 @@ from dash import Dash, html, callback, dcc, Input, Output
 def make_dash(server):
     return Dash(
         server=server,
-        url_base_pathname='/dash/'
+        url_base_pathname='/dash/', title="Dash demo 1"
     )
 
 def make_layout():
     return html.Div(                                                                                                                                                                                                 
-        [                                                                                                                                                                                                            
-            html.P("Hey this is a Dash app :)"),                                                                                                                                                                     
+        [   
+            html.A("Home",href='/', title="Click to go back to Home"),
+            html.Hr(),                                                                                                                                                                                 
+            html.P("Hey this is a demo Dash app 1. Type something in the text box:)"),                                                                                                                                                                     
             dcc.Input(id="input"),                                                                                                                                                                                   
             html.Div(id="output"),                                                                                                                                                                                   
         ]                                                                                                                                                                                                            
@@ -55,3 +57,4 @@ def define_callbacks():
 #https://stackoverflow.com/questions/74762322/integrating-dash-and-flask-by-inserting-dash-chart-into-div-block-of-flask-templ
 #IFRAME approach
 #
+# Rename to Dash demo
