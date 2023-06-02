@@ -16,7 +16,7 @@ from dash import Dash, html, callback, dcc, Input, Output
 def make_dash(server):
     return Dash(
         server=server,
-        url_base_pathname='/dash/', title="Dash demo 1"
+        url_base_pathname='/dash1/', title="Dash demo 1"
     )
 
 def make_layout():
