@@ -38,7 +38,11 @@
                         {
                             "name" : "ENVIRONMENT",
                             "value" : "[parameters('environment')]"
-                        }
+                        },
+                        {
+                            "name" : "SCM_DO_BUILD_DURING_DEPLOYMENT",
+                            "value" : "1"
+                        }           
                     ],
                     "linuxFxVersion": "[parameters('linuxFxVersion')]",
                     "alwaysOn": "[parameters('alwaysOn')]",

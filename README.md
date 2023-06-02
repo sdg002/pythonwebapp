@@ -39,11 +39,13 @@ Python Flask Web App
 # Next step
 - ~~CICD version in template~~
 - ~~bootstrap~~
-- Simple plot demo
+- Simple dash demo 1
+- Simple dash demo 2
+- Simple plotly demo with  plotly .js
+- Single dashboard page with narration and embedded IFRAME based charts
 - Simple bootstrap form submission demo using Flask postback
 - 
-- 
-- 
+
 ---
 
 # Change the folder structure - probable idea
