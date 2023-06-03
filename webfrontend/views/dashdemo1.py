@@ -25,15 +25,15 @@ def make_layout():
             html.A("Home",href='/', title="Click to go back to Home"),
             html.Hr(),                                                                                                                                                                                 
             html.P("Hey this is a demo Dash app 1. Type something in the text box:)"),                                                                                                                                                                     
-            dcc.Input(id="input"),                                                                                                                                                                                   
-            html.Div(id="output"),                                                                                                                                                                                   
+            dcc.Input(id="input1"),                                                                                                                                                                                   
+            html.Div(id="output1"),                                                                                                                                                                                   
         ]                                                                                                                                                                                                            
     )
 
 def define_callbacks():
     @callback(
-        Output("output", "children"),
-        Input("input", "value"),
+        Output("output1", "children"),
+        Input("input1", "value"),
     )
     def show_output(text):
         return f"you entered: '{text}'"

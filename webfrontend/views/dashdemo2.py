@@ -2,13 +2,20 @@ import dash as dash
 
 class DashDemo2(object):
     """Container class to hodl the Dash entry point methods"""
+
+    @classmethod
+    def register_page(cls):
+        dash.register_page(__name__,path="/dash2/")
+        cls.make_layout()
+        pass
+
     @classmethod
     def make_dash(cls, server):
         d=dash.Dash(
             server=server,
             url_base_pathname='/dash2/', title="Dash demo 2"
         )
-        d.layout = cls.make_layout
+        d.layout = cls.make_layout()
         cls.define_callbacks()
         return d
 
