@@ -123,13 +123,17 @@ Good article and hilights some of the challenges. But,this does not use `multi p
 https://github.com/tzelleke/flask-dash-app/blob/master/app/dash/demo.py
 Good sample. But, this too does not use `multi pages` approach
 
+## Dash - Basic callbacks
+This is a nice demo. Restrict to single Dash instance.
+https://dash.plotly.com/basic-callbacks
+
 ## Flask and Dash - integrating via IFRAME
 Looks like a sensible approach to keep compexity low
 https://stackoverflow.com/questions/74762322/integrating-dash-and-flask-by-inserting-dash-chart-into-div-block-of-flask-templ
 
 
-## What did I try in the app.py
-This does not work
+## Lesson - Multiple Dash instances - What did I try in the app.py and did not owrk
+This does not work. You can only create a single instance of Dash
 
 ```python
 #First dash page registration
@@ -151,5 +155,6 @@ This uses Bootstrap extensively. Need to read in depth
 
 ---
 
-# Plotly demo code
+# Plotly Express demo code
+Nice demo. This embeds a `graphJSON` variable from the route handler
 https://www.geeksforgeeks.org/create-a-bar-chart-from-a-dataframe-with-plotly-and-flask/
