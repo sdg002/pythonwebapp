@@ -1,42 +1,38 @@
-# import os
-# from flask import Blueprint, render_template
-# import datetime
 
-# plotly_demo_blue_print = Blueprint(name="plotly_demo", import_name=__name__)
-
-# @plotly_demo_blue_print.route("/plotlydemo")
-# def version():
-#     return render_template("plotlydemo.html")
-
-
-
+import logging
 from dash import Dash, html, callback, dcc, Input, Output
+import plotly.express as px
+import pandas as pd
 
+logging.info("Begin-Fetching CSV data from REST API for CSV")
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminder_unfiltered.csv')    
+logging.info("End-Fetching CSV data from REST API for CSV")
 
 def make_dash(server):
+    logging.info("Inside make_dash")
     return Dash(
         server=server,
         url_base_pathname='/dash1/', title="Dash demo 1"
     )
 
 def make_layout():
-    return html.Div(                                                                                                                                                                                                 
-        [   
-            html.A("Home",href='/', title="Click to go back to Home"),
-            html.Hr(),                                                                                                                                                                                 
-            html.P("Hey this is a demo Dash app 1. Type something in the text box:)"),                                                                                                                                                                     
-            dcc.Input(id="input1"),                                                                                                                                                                                   
-            html.Div(id="output1"),                                                                                                                                                                                   
-        ]                                                                                                                                                                                                            
-    )
+    logging.info("Inside make_layout")
+    return html.Div([
+    html.H1(children='Title of Dash App', style={'textAlign':'center'}),
+    dcc.Dropdown(df.country.unique(), 'Canada', id='dropdown-selection'),
+    dcc.Graph(id='graph-content')])
 
 def define_callbacks():
     @callback(
-        Output("output1", "children"),
-        Input("input1", "value"),
+        Output('graph-content', 'figure'),
+        Input('dropdown-selection', 'value')
     )
-    def show_output(text):
-        return f"you entered: '{text}'"
+    def update_graph(value):
+        logging.info(f"Inside method update_graph, value={value}")
+        dff = df[df.country==value]
+        return px.line(dff, x='year', y='pop')
+
+
 #
 #https://hackersandslackers.com/plotly-dash-with-flask/
 #

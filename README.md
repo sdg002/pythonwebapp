@@ -144,6 +144,11 @@ dashdemo2.DashDemo2.register_page()
 #dashdemo2.DashDemo2.make_dash(server=app)
 
 ```
+
+## Sample using IFRAME approach
+https://towardsdatascience.com/embed-multiple-dash-apps-in-flask-with-microsoft-authenticatio-44b734f74532
+This uses Bootstrap extensively. Need to read in depth
+
 ---
 
 # Plotly demo code
