@@ -17,8 +17,11 @@ def make_dash(server):
 
 def make_layout():
     logging.info("Inside make_layout")
+
     return html.Div([
-    html.H1(children='Title of Dash App', style={'textAlign':'center'}),
+    html.A("Home",href='/', title="Click to go back to Home"),
+    html.H1(children='Demo Dash App', style={'textAlign':'center'}),
+    html.Hr(),
     dcc.Dropdown(df.country.unique(), 'Canada', id='dropdown-selection'),
     dcc.Graph(id='graph-content')])
 
