@@ -8,6 +8,7 @@ trigger:
     include:
     - webfrontend/
     - devops/webfrontend/
+    - /cicd.yml
 
 pr:
   paths:
@@ -16,6 +17,7 @@ pr:
     include:
     - /webfrontend/
     - /devops/webfrontend/
+    - /cicd.yml
 
 pool:
   vmImage: ubuntu-latest
