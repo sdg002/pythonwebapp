@@ -1,6 +1,6 @@
   jobs:
   - job: DeployJob
-    displayName: 'Deploy job-$(ENVIRONMENT)'
+    displayName: 'Deploy job-$(ENVIRONMENT)-$(environment)'
     steps:
 
     - task: DownloadPipelineArtifact@2
