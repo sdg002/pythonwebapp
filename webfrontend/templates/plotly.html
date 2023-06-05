@@ -6,9 +6,14 @@
 
 {% block content %}
   
-<h2>Plotly</h2> 
+<h2>Plotly demo</h2> 
 
 <div>
-  Plotly stuff comes here
+  <div id='chart' class='chart'”></div>   
+  <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+  <script type='text/javascript'>
+    var graphs = {{graphJSON | safe}};
+    Plotly.plot('chart',graphs,{});
+  </script>  
 </div>
 {% endblock %}
