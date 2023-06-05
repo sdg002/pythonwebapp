@@ -10,16 +10,12 @@ trigger:
     - devops/webfrontend/
 
 pr:
-  branches:
-    include:
-    - feature/*
-
   paths:
     exclude:
     - /docs/*
     include:
-    - webfrontend/
-    - devops/webfrontend/
+    - /webfrontend/
+    - /devops/webfrontend/
 
 pool:
   vmImage: ubuntu-latest
