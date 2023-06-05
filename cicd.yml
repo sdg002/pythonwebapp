@@ -8,18 +8,16 @@ trigger:
     include:
     - webfrontend/
     - devops/webfrontend/
+    - /cicd.yml
 
 pr:
-  branches:
-    include:
-    - feature/*
-
   paths:
     exclude:
     - /docs/*
     include:
-    - webfrontend/
-    - devops/webfrontend/
+    - /webfrontend/
+    - /devops/webfrontend/
+    - /cicd.yml
 
 pool:
   vmImage: ubuntu-latest
