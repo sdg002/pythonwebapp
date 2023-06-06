@@ -12,6 +12,9 @@ def home_get():
 
 @form_post_back.route("/formpostback", methods=["POST"])
 def home_submit():
-    logging.info(f"Form submission ,email={request.form['exampleemail']}, text={request.form['exampletext']}")
-    return render_template("formpostback.html")
+    email=request.form['exampleemail']
+    text=request.form['exampletext']
+    message=f"Form submission ,email={email}, text={text}"
+    logging.info(message)
+    return render_template("formpostback.html", message=message, exampleemail=email)
 
