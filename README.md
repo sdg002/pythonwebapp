@@ -178,3 +178,9 @@ https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form
 # Flask reference
 ## Form submission demo from DigitalOcean
 https://www.digitalocean.com/community/tutorials/how-to-use-web-forms-in-a-flask-application
+
+## Populate the items of a SELECT element 
+https://www.appsloveworld.com/coding/flask/49/how-to-populate-a-html-dropdown-dynamically-with-values-from-a-postgres-database
+
+## Set the default selection of a SELECT element
+https://www.geeksforgeeks.org/how-to-set-the-default-value-for-an-html-select-element/
