@@ -6,6 +6,7 @@ from views.environment import environment_blue_print
 from views.home import home_blue_print
 from views.about import about_blue_print
 from views.plotlydemo import plotly_blue_print
+from views.formpostback import form_post_back
 
 import logging
 
@@ -15,6 +16,7 @@ app.register_blueprint(environment_blue_print)
 app.register_blueprint(home_blue_print)
 app.register_blueprint(about_blue_print)
 app.register_blueprint(plotly_blue_print)
+app.register_blueprint(form_post_back)
 
 logging.basicConfig(level=logging.INFO)
 
