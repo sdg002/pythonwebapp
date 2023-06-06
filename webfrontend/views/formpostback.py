@@ -14,7 +14,8 @@ def home_get():
 def home_submit():
     email=request.form['exampleemail']
     text=request.form['exampletext']
-    message=f"Form submission ,email={email}, text={text}"
+    color=request.form['examplecolor']
+    message=f"Form submission ,email={email}, text={text}, color={color}"
     logging.info(message)
-    return render_template("formpostback.html", message=message, exampleemail=email)
+    return render_template("formpostback.html", message=message, exampleemail=email, examplecolor=color, exampletext=text)
 
