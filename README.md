@@ -155,6 +155,32 @@ This uses Bootstrap extensively. Need to read in depth
 
 ---
 
-# Plotly Express demo code
+# Plotly reference
+
+## Plotly JSON online editor
+https://plotly.com/chart-studio-help/json-chart-schema/#online-json-editor
+
+
+## Plotly Express demo code
 Nice demo. This embeds a `graphJSON` variable from the route handler
 https://www.geeksforgeeks.org/create-a-bar-chart-from-a-dataframe-with-plotly-and-flask/
+
+
+# Hmtl forms
+
+## Bootstrap styling
+https://www.w3schools.com/bootstrap5/bootstrap_forms.php
+https://getbootstrap.com/docs/5.0/forms/form-control/
+
+## How does basic form submission work?
+https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data
+
+# Flask reference
+## Form submission demo from DigitalOcean
+https://www.digitalocean.com/community/tutorials/how-to-use-web-forms-in-a-flask-application
+
+## Populate the items of a SELECT element 
+https://www.appsloveworld.com/coding/flask/49/how-to-populate-a-html-dropdown-dynamically-with-values-from-a-postgres-database
+
+## Set the default selection of a SELECT element
+https://www.geeksforgeeks.org/how-to-set-the-default-value-for-an-html-select-element/

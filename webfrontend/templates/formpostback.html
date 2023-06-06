@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Form post back{% endblock %}
+
+{% block header %}Form post back{% endblock %}
+
+{% block content %}
+    <h2>How to handle form submission?</h2>
+  
+
+<form method="POST">
+    <div class="mb-3">
+        <label for="examplecolor" class="form-label">Select favourite color:</label>
+        <select type="email" class="form-control" name="examplecolor" id="examplecolor" class="form-select">
+          <option value="red">Red</option>
+          <option value="amber">Amber</option>
+          <option value="green">Green</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="exampleemail" class="form-label" >Email address</label>
+        <input type="email" class="form-control" name="exampleemail" placeholder="name@example.com" value="{{exampleemail}}" id="exampleemail">
+    </div>
+    <div class="mb-3">
+      <label for="exampletext" class="form-label">Example textarea</label>
+      <textarea class="form-control" name="exampletext" rows="3" id="exampletext">{{exampletext}}</textarea>
+    </div>
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary mb-3">Submit</button>
+    </div>
+</form>
+<div class="alert alert-info">
+  <strong>Info!</strong> {{message}}.
+</div>
+{% endblock %}
