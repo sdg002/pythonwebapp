@@ -1,14 +1,15 @@
-# import os
-# from flask import Blueprint, render_template
-# import datetime
 
 import logging
 from dash import Dash, html, callback, dcc, Input, Output
 import plotly.express as px
 import pandas as pd
+import flask as flask
 
 logging.info("Begin-Fetching CSV data from REST API for CSV")
-df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminder_unfiltered.csv')    
+#original url is 'https://raw.githubusercontent.com/plotly/datasets/master/gapminder_unfiltered.csv'
+#url=f'{flask.request.host_url}/static/data/gapminder.csv' #I was trying to pull the data from the this very server, but did not work
+url='https://raw.githubusercontent.com/plotly/datasets/master/gapminder_unfiltered.csv'
+df = pd.read_csv(url)
 logging.info("End-Fetching CSV data from REST API for CSV")
 
 def make_dash(server):

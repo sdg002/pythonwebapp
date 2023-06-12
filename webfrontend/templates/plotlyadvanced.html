@@ -1,13 +1,36 @@
 {% extends "base.html" %}
 
-{% block title %}Plotly demo{% endblock %}
+{% block title %}Plotly advanced demo{% endblock %}
 
-{% block header %}Plotly demo{% endblock %}
+{% block header %}Plotly advanced demo{% endblock %}
 
 {% block content %}
   
-<h2>Plotly demo</h2> 
+<h2>Plotly advanced demo</h2> 
 
+<form method="POST">
+  <div class="mb-3">
+    <div class="row">
+      <div class="col">
+        {{helper.select_element(class_name="form-control form-select", id="countrydropdown2", name="countrydropdown2")|safe }}
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="countrydropdown" class="form-label">Select country:</label>
+        <select class="form-control" name="countrydropdown" id="countrydropdown" class="form-select">
+          <option value="red">Red</option>
+          <option value="amber">Amber</option>
+          <option value="green">Green</option>
+        </select>    
+      </div>      
+    </div>
+</div>
+</form>
+<hr/>
 <div>
   <div id='chart' class='chart'”></div>   
   <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>

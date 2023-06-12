@@ -10,7 +10,7 @@ from views.formpostback import form_post_back
 from views.plotlyadvanced import plotly_advanced_blue_print
 import logging
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static',static_url_path='/static/')
 app.register_blueprint(version_blue_print)
 app.register_blueprint(environment_blue_print)
 app.register_blueprint(home_blue_print)
