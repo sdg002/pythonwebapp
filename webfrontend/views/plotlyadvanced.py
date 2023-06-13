@@ -9,6 +9,22 @@ import json
 
 plotly_advanced_blue_print = flask.Blueprint(name="plotlyadvanced", import_name=__name__)
 
+@plotly_advanced_blue_print.route("/plotlyadvanced", methods=["GET"])
+def plotly_demo_temp():
+    host_url = flask.request.host_url
+    d = dict()
+    d["name1"] = "value 1"
+    d["request.host_url"] = flask.request.host_url
+    d["request.host"] = flask.request.host
+    d["request.full_path"] = flask.request.full_path
+    d["request.date"] = flask.request.date
+    d["request.cookies"] = str(flask.request.cookies)
+    d["request.headers"] = str(flask.request.headers)
+    display=""
+    for item in d.keys():
+        display=display + f"{item}={d[item]}<br/>"
+    return display
+
 #youw ere here, look at what was done in dash demo and populate drpo down
 @plotly_advanced_blue_print.route("/plotlyadvanced", methods=["GET"])
 def plotly_demo():
@@ -43,8 +59,11 @@ def plotly_demo():
     # Create graphJSON
     graphJSON = json.dumps(fig, cls=  plotly.utils.PlotlyJSONEncoder)
      
-    # Use render_template to pass graphJSON to html
+    
     countries = list(df_countries)
+    # you were here, you got the countries populated, now look at Dash and create a line chart (filter on the selected country, default selection is None)
+    # extend HtmlHelper to render the selected item
+    # when postback happens re-render the same view - one common parameteried function to render
     html_helper = HtmlHelper(values=countries, labels=countries)
     return flask.render_template('plotlyadvanced.html', graphJSON=graphJSON, helper=html_helper)
 
