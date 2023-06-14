@@ -9,8 +9,10 @@ import json
 
 plotly_advanced_blue_print = flask.Blueprint(name="plotlyadvanced", import_name=__name__)
 
-@plotly_advanced_blue_print.route("/plotlyadvanced", methods=["GET"])
+@plotly_advanced_blue_print.route("/plotlyadvanced2", methods=["GET"])
 def plotly_demo_temp():
+    #you were here 
+    #request.host_url=http://app-saupythonflask001-dev.azurewebsites.net/
     host_url = flask.request.host_url
     d = dict()
     d["name1"] = "value 1"
@@ -25,10 +27,13 @@ def plotly_demo_temp():
         display=display + f"{item}={d[item]}<br/>"
     return display
 
-#youw ere here, look at what was done in dash demo and populate drpo down
+
 @plotly_advanced_blue_print.route("/plotlyadvanced", methods=["GET"])
 def plotly_demo():
     host_url = flask.request.host_url
+    ###
+    host_url='https://app-saupythonflask001-dev.azurewebsites.net/'
+    ###
     logging.info(f"Host url is {host_url}")
     data_file_url = f"{host_url}/static/data/gapminder.csv"
     logging.info(f"Going to download {data_file_url}")

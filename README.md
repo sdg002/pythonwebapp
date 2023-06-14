@@ -179,3 +179,6 @@ https://www.appsloveworld.com/coding/flask/49/how-to-populate-a-html-dropdown-dy
 
 ## Set the default selection of a SELECT element
 https://www.geeksforgeeks.org/how-to-set-the-default-value-for-an-html-select-element/
+
+# Flask/Jinja rendering - escaping HTML
+https://stackoverflow.com/questions/3206344/passing-html-to-template-using-flask-jinja2
