@@ -31,8 +31,7 @@ def plotly_demo_temp():
 @plotly_advanced_blue_print.route("/plotlyadvanced", methods=["GET"])
 def plotly_demo_outer():
     try:
-        #return plotly_demo()
-        x=1/0
+        return plotly_demo()
         pass
     except Exception as err:
         logging.error(str(err))
