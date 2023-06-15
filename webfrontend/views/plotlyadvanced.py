@@ -7,6 +7,7 @@ import plotly
 import pandas as pd
 import json
 
+GAP_MINDER_DATA_SOURCE='https://raw.githubusercontent.com/plotly/datasets/master/gapminder_unfiltered.csv'
 plotly_advanced_blue_print = flask.Blueprint(name="plotlyadvanced", import_name=__name__)
 
 @plotly_advanced_blue_print.route("/plotlyadvanced2", methods=["GET"])
@@ -41,10 +42,12 @@ def plotly_demo_outer():
 def plotly_demo():
     host_url = flask.request.host_url
     ###
-    host_url='https://app-saupythonflask001-dev.azurewebsites.net/'
+    #this does not work ,the web app times out. works fine locally
+    #host_url='https://app-saupythonflask001-dev.azurewebsites.net/'
     ###
     logging.info(f"Host url is {host_url}")
-    data_file_url = f"{host_url}/static/data/gapminder.csv"
+    #data_file_url = f"{host_url}/static/data/gapminder.csv"
+    data_file_url=GAP_MINDER_DATA_SOURCE
     logging.info(f"Going to download {data_file_url}")
     df_gapminder = pd.read_csv(data_file_url)
     logging.info(f"Found {len(df_gapminder)} records in the dataframe ")
