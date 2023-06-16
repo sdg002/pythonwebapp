@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Plotly advanced demo{% endblock %}
+
+{% block header %}Plotly advanced demo{% endblock %}
+
+{% block content %}
+  
+<h2>Plotly advanced demo</h2> 
+
+<form method="POST">
+  <div class="mb-3">
+    <div class="row">
+      <div class="col">
+        {{helper.select_element(class_name="form-control form-select", id="countrydropdown", name="countrydropdown")|safe }}
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div id='chart' class='chart'”></div>   
+      </div>      
+    </div>
+</div>
+</form>
+<hr/>
+<div>
+  <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+  <script type='text/javascript'>
+    var graphs = {{graphJSON | safe}};
+    Plotly.plot('chart',graphs,{});
+  </script>  
+</div>
+{% endblock %}

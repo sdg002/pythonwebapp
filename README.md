@@ -37,13 +37,8 @@ Python Flask Web App
 ```
 ---
 # Next step
-- ~~CICD version in template~~
-- ~~bootstrap~~
-- Simple dash demo 1
-- Simple dash demo 2
-- Simple plotly demo with  plotly .js
+- Advanced Plotly  -replicate the Dash demo using Plotly express
 - Single dashboard page with narration and embedded IFRAME based charts
-- Simple bootstrap form submission demo using Flask postback
 - 
 
 ---
@@ -184,3 +179,6 @@ https://www.appsloveworld.com/coding/flask/49/how-to-populate-a-html-dropdown-dy
 
 ## Set the default selection of a SELECT element
 https://www.geeksforgeeks.org/how-to-set-the-default-value-for-an-html-select-element/
+
+# Flask/Jinja rendering - escaping HTML
+https://stackoverflow.com/questions/3206344/passing-html-to-template-using-flask-jinja2
