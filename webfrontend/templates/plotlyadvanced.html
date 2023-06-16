@@ -20,19 +20,13 @@
     </div>
     <div class="row">
       <div class="col">
-        <label for="countrydropdown" class="form-label">Select country:</label>
-        <select class="form-control" name="countrydropdown" id="countrydropdown" class="form-select">
-          <option value="red">Red</option>
-          <option value="amber">Amber</option>
-          <option value="green">Green</option>
-        </select>    
+        <div id='chart' class='chart'”></div>   
       </div>      
     </div>
 </div>
 </form>
 <hr/>
 <div>
-  <div id='chart' class='chart'”></div>   
   <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
   <script type='text/javascript'>
     var graphs = {{graphJSON | safe}};
