@@ -65,7 +65,7 @@ def plotly_demo():
     # you were here, you got the countries populated, now look at Dash and create a line chart (filter on the selected country, default selection is None)
     # extend HtmlHelper to render the selected item
     # when postback happens re-render the same view - one common parameteried function to render
-    html_helper = lib.HtmlHelper(values=countries, labels=countries)
+    html_helper = lib.SelectElementHelper(values=countries, labels=countries)
     return flask.render_template('plotlyadvanced.html', graphJSON=graphJSON, helper=html_helper)
 
 

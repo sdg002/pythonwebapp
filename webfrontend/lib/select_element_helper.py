@@ -1,5 +1,5 @@
-class HtmlHelper():
-    """docstring for HtmlHelper Provides helper methods to simplify the generation of basic HTML elements """
+class SelectElementHelper():
+    """docstring for SelectElementHelper provides a helper method to simplify the generation of basic HTML elements """
     def __init__(self, labels:list, values:list):
         self.values= [] if values is None else values
         #TODO check for type
