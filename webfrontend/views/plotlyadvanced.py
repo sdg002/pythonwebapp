@@ -72,7 +72,7 @@ def render_plotly_graph(df: pd.DataFrame,country: str)->str:
     
     countries = list(df_countries)
     # extend HtmlHelper to render the selected item
-    html_helper = lib.SelectElementHelper(values=countries, labels=countries)
+    html_helper = lib.SelectElementHelper(values=countries, labels=countries, selected_value=country)
     return flask.render_template('plotlyadvanced.html', graphJSON=graphJSON, helper=html_helper)
 
 
