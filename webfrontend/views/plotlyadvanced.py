@@ -40,21 +40,6 @@ def plotly_demo_outer():
         logging.error(str(err))
         return str(err)
 
-# def plotly_demo():
-     
-#     selected_country=df_countries[0]
-#     dff = df_gapminder[df_gapminder['country']==selected_country]
-#     title = f"Selected country is <b>{selected_country}</b>"
-#     fig=px.line(dff, x='year', y='pop', title=title)
-#     graphJSON = json.dumps(fig, cls=  plotly.utils.PlotlyJSONEncoder)
-    
-#     countries = list(df_countries)
-#     # you were here, you got the countries populated, now look at Dash and create a line chart (filter on the selected country, default selection is None)
-#     # extend HtmlHelper to render the selected item
-#     # when postback happens re-render the same view - one common parameteried function to render
-#     html_helper = lib.SelectElementHelper(values=countries, labels=countries)
-#     return flask.render_template('plotlyadvanced.html', graphJSON=graphJSON, helper=html_helper)
-
 
 def get_data()->pd.DataFrame:
     ###
