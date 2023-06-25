@@ -19,3 +19,11 @@ def home_submit():
     logging.info(message)
     return render_template("formpostback.html", message=message, exampleemail=email, examplecolor=color, exampletext=text)
 
+
+@form_post_back.route("/formpostbackusinggetmethod", methods=["GET","POST"])
+def form_submit_using_get():
+    logging.info("Get handler")
+    #you were get values from request and render
+    #ammend the HTML to accept parameters
+    #render SELECTED item 
+    return render_template("formpostbackget.html")
