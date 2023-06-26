@@ -24,15 +24,13 @@ def home_submit():
 @form_post_back.route("/formpostbackusinggetmethod", methods=["GET","POST"])
 def form_submit_using_get():
     logging.info("Get handler")
-    #you were get values from request and render
-    #ammend the HTML to accept parameters
-    #render SELECTED item 
-    #hee
     example_color=request.args.get("examplecolor", "")
     color_values=["red", "green", "blue"]
     color_labels = ["Red" ,"Green", "Blue"]
     html_helper = lib.SelectElementHelper(values=color_values, labels=color_labels, selected_value=example_color)
 
+    example_colour=request.args.get("examplecolor", "")
     exampletext=request.args.get("exampletext", "")
     exampleemail = request.args.get("exampleemail", "")
-    return render_template("formpostbackget.html", exampletext=exampletext, exampleemail=exampleemail, helper=html_helper)
+    message=f"<strong>Email</strong>={exampleemail}, <strong>Colour</strong>={example_colour}, <strong>Example text</strong>={exampletext}"
+    return render_template("formpostbackget.html", exampletext=exampletext, exampleemail=exampleemail, helper=html_helper, message=message)
