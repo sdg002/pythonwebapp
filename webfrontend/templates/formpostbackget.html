@@ -11,11 +11,13 @@
 <form method="GET">
     <div class="mb-3">
         <label for="examplecolor" class="form-label">Select favourite color:</label>
-        <select type="email" class="form-control" name="examplecolor" id="examplecolor" class="form-select">
+        {{helper.select_element(class_name="form-control form-select", id="examplecolor", name="examplecolor")|safe }}
+
+        <!-- <select type="email" class="form-control" name="examplecolor" id="examplecolor" class="form-select">
           <option value="red">Red</option>
           <option value="amber">Amber</option>
           <option value="green">Green</option>
-        </select>
+        </select> -->
     </div>
     <div class="mb-3">
         <label for="exampleemail" class="form-label" >Email address</label>
