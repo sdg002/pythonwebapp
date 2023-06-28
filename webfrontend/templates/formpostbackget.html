@@ -29,4 +29,23 @@
 <div class="alert alert-info">
   <strong>Info!</strong> {{message| safe}}.
 </div>
+
+
+<div class="notes">
+  In this example we are demonstrating how to submit a HTML FORM element using the HTTP GET method.
+</div>
+
+
+<pre class="snippet">
+  &lt;form method=&quot;GET&quot;&gt;
+    &lt;label for=&quot;exampleemail&quot;  &gt;Email address&lt;/label&gt;
+    &lt;input type=&quot;email&quot;  name=&quot;exampleemail&quot; placeholder=&quot;name@example.com&quot; value=&quot;{{exampleemail}}&quot; id=&quot;exampleemail&quot;&gt;
+    &lt;textarea name=&quot;exampletext&quot; rows=&quot;3&quot; &gt;{{exampletext}}&lt;/textarea&gt;
+    &lt;button type=&quot;submit&quot; &gt;Submit&lt;/button&gt;
+  &lt;/form&gt;
+</pre>
 {% endblock %}
+
+
+
+

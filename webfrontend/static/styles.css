@@ -1,0 +1,7 @@
+pre.snippet {
+    background-color: ghostwhite;border-style: solid;border-width: 1px;border-radius: 5px;margin-top: 1em ;font-family: monospace;
+}
+
+div.notes{
+    border-width: 1px; border-color: lightgray;border-style: solid;
+}
