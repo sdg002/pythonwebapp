@@ -182,3 +182,43 @@ https://www.geeksforgeeks.org/how-to-set-the-default-value-for-an-html-select-el
 
 # Flask/Jinja rendering - escaping HTML
 https://stackoverflow.com/questions/3206344/passing-html-to-template-using-flask-jinja2
+
+---
+
+# Plotly next steps
+
+## How to customize the rendering of the tooltip ?
+https://plotly.com/python/creating-and-updating-figures/
+
+
+## How to make subplots ?
+Search for subplot
+https://plotly.com/python/creating-and-updating-figures/
+
+
+## How to add traces ?
+Search for "add traces" 
+https://plotly.com/python/creating-and-updating-figures/
+
+
+## How to have bar and scatter plots in a single figure ?
+Look for the code snippet which has `add_bar` , `add_scatter` in a single
+https://plotly.com/python/creating-and-updating-figures/
+
+
+## Updating figure axes
+Search for "Updating Figure Axes"
+https://plotly.com/python/creating-and-updating-figures/
+
+
+## Pie Chart
+
+https://chart-studio.plotly.com/~Dreamshot/8254/most-popular-content-management-systems/#code
+
+
+---
+
+# Public gallery of Plotly (Similar to JSFiddle)
+
+https://chart-studio.plotly.com/feed/#/
+
