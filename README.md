@@ -189,6 +189,12 @@ https://stackoverflow.com/questions/3206344/passing-html-to-template-using-flask
 
 ## How to customize the rendering of the tooltip ?
 https://plotly.com/python/creating-and-updating-figures/
+Look for 'hovertemplate' for an example
+
+https://plotly.com/python/hover-text-and-formatting/
+Better guidance on hover template 
+- Example of Sine curve with a hovering vertical line
+- Example of X and Y hover lines (Styled spike lines)
 
 
 ## How to make subplots ?

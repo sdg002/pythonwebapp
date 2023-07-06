@@ -130,3 +130,37 @@ def plotlyadvancedhover_on_x_axis():
         logging.error(str(err))
         return str(err)
 
+@plotly_advanced_blue_print.route("/plotlyadvancedhovertemplate")
+def plotlyadvanced_hover_template():
+    #
+    #https://plotly.com/python/hover-text-and-formatting/
+    # Search for 'Customizing hover text with a hovertemplate'
+    #
+    try:
+        x = [1,2,3,4,5]
+        y = [2.02825,1.63728,6.83839,4.8485,4.73463]
+        fig = go.Figure(go.Scatter(
+            x = x,
+            y = y,
+            hovertemplate =
+            '<i>Price</i>: $%{y:.2f}'+
+            '<br><b>X</b>: %{x}<br>'+
+            '<b>%{text}</b>',
+            text = ['Custom text {}'.format(i + 1) for i in range(len(x))],
+            showlegend = False))
+
+        fig.add_trace(go.Scatter(
+            x = [1,2,3,4,5],
+            y = [3.02825,2.63728,4.83839,3.8485,1.73463],
+            hovertemplate = 'Price: %{y:$.2f}<extra></extra>',
+            showlegend = False))
+
+        fig.update_layout(
+            hoverlabel_align = 'right',
+            title = "Set hover text with hovertemplate")
+
+        graphJSON = json.dumps(fig, cls=  plotly.utils.PlotlyJSONEncoder)
+        return flask.render_template('plotly_generic.html', graphJSON=graphJSON, title="Hover lines along X axes only") 
+    except Exception as err:
+        logging.error(str(err))
+        return str(err)
