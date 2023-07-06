@@ -7,6 +7,8 @@ import plotly
 import pandas as pd
 import json
 import lib as lib
+import numpy as np
+import plotly.graph_objects as go
 
 GAP_MINDER_DATA_SOURCE='https://raw.githubusercontent.com/plotly/datasets/master/gapminder_unfiltered.csv'
 plotly_advanced_blue_print = flask.Blueprint(name="plotlyadvanced", import_name=__name__)
@@ -91,6 +93,7 @@ def plotly_demo_submit():
 def plotlyadvancedhoverbothaxis():
     #
     #https://plotly.com/python/hover-text-and-formatting/
+    #Search for "Spike lines"
     #
     try:
         df = px.data.gapminder().query("continent=='Oceania'")
@@ -105,3 +108,25 @@ def plotlyadvancedhoverbothaxis():
     except Exception as err:
         logging.error(str(err))
         return str(err)
+
+#
+#Selecting a hovermode in a figure created with plotly.graph_objects
+#
+@plotly_advanced_blue_print.route("/plotlyadvancedxaxis")
+def plotlyadvancedhover_on_x_axis():
+    #
+    #https://plotly.com/python/hover-text-and-formatting/
+    # Search for 'Selecting a hovermode in a figure created with plotly.graph_objects'
+    #
+    try:
+        t = np.linspace(0, 2 * np.pi, 100)
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=t, y=np.sin(t), name='sin(t)'))
+        fig.add_trace(go.Scatter(x=t, y=np.cos(t), name='cost(t)'))
+        fig.update_layout(hovermode='x unified')
+        graphJSON = json.dumps(fig, cls=  plotly.utils.PlotlyJSONEncoder)
+        return flask.render_template('plotly_generic.html', graphJSON=graphJSON, title="Hover lines along X axes only") 
+    except Exception as err:
+        logging.error(str(err))
+        return str(err)
+
