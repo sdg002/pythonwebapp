@@ -86,3 +86,22 @@ def plotly_demo_submit():
     except Exception as err:
         logging.error(str(err))
         return str(err)
+
+@plotly_advanced_blue_print.route("/plotlyadvancedhoverbothaxis")
+def plotlyadvancedhoverbothaxis():
+    #
+    #https://plotly.com/python/hover-text-and-formatting/
+    #
+    try:
+        df = px.data.gapminder().query("continent=='Oceania'")
+
+        fig = px.line(df, x="year", y="lifeExp", color="country", title="Spike lines")
+        fig.update_traces(mode="markers+lines")
+
+        fig.update_xaxes(showspikes=True)
+        fig.update_yaxes(showspikes=True)        
+        graphJSON = json.dumps(fig, cls=  plotly.utils.PlotlyJSONEncoder)
+        return flask.render_template('plotly_generic.html', graphJSON=graphJSON, title="Hover lines along X and Y axes") 
+    except Exception as err:
+        logging.error(str(err))
+        return str(err)

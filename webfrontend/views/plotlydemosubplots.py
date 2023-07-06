@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 import plotly
 import pandas as pd
 import json
+import logging
 
 plotly_subplot_blue_print = flask.Blueprint(name="plotlysubplotsdemo", import_name=__name__)
 
@@ -13,6 +14,7 @@ plotly_subplot_blue_print = flask.Blueprint(name="plotlysubplotsdemo", import_na
 def plotly_demo():
     df = px.data.iris()
 
+    logging.info(f"Displaying iris df={df.head(3)}")
     fig = px.scatter(df, x="sepal_width", y="sepal_length", color="species", facet_col="species",
                     title="Adding Traces To Subplots Witin A Plotly Express Figure")
 
