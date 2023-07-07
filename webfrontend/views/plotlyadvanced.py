@@ -139,6 +139,7 @@ def plotlyadvanced_hover_template():
     try:
         x = [1,2,3,4,5]
         y = [2.02825,1.63728,6.83839,4.8485,4.73463]
+        custom_text = [f'My Custom text {i+1}' for i in range(len(x))]
         fig = go.Figure(go.Scatter(
             x = x,
             y = y,
@@ -146,13 +147,22 @@ def plotlyadvanced_hover_template():
             '<i>Price</i>: $%{y:.2f}'+
             '<br><b>X</b>: %{x}<br>'+
             '<b>%{text}</b>',
-            text = ['Custom text {}'.format(i + 1) for i in range(len(x))],
+            text = custom_text,
             showlegend = False))
+
+        #did not work
+        second_hover_template="<div class='second_hover_template'>Price</div>: %{y:$.2f}<extra></extra>"
+
+        #this too did not work, just try bold
+        #<b> works, but <div> and <strong> did not work!!!
+        second_hover_template="<b>Price</b>: %{y:$.2f}<extra>Extra stuff</extra>"
+
+        # Only a subset of HTML is supported https://community.plotly.com/t/can-you-add-html-to-plot-hovertext/306
 
         fig.add_trace(go.Scatter(
             x = [1,2,3,4,5],
             y = [3.02825,2.63728,4.83839,3.8485,1.73463],
-            hovertemplate = 'Price: %{y:$.2f}<extra></extra>',
+            hovertemplate = second_hover_template,
             showlegend = False))
 
         fig.update_layout(
