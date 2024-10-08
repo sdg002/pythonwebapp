@@ -1,19 +1,25 @@
 [[_TOC_]]
-# pythonwebapp
-Python Flask Web App
 
 # Overview
-- Build a front end in Flask
-- The landing page must contain a nice display of links to child pages
+- This is a Python web application built using Flask
+- The base template uses simple Bootstrap CSS navigation for displaying child links
 
+![bootstrap_navbar.png](docs/images/bootstrap_navbar.png)
+
+---
+
+# Current deployment
+
+- **DEV**-https://app-saupythonflask001-dev.azurewebsites.net/
+- **PROD**-https://app-saupythonflask001-prod.azurewebsites.net/
 ---
 
 # Source code structure
 
 ## Top level folders
-- devops
-- webfrontend
-- 
+- **devops**-ARM template and YAML template files
+- **webfrontend**-Python source code
+- **docs**-Documentation, picture files
 
 ## Detailed structure
 
@@ -36,56 +42,6 @@ Python Flask Web App
 ---cicd.yml
 ```
 ---
-# Next step
-- Advanced Plotly  -replicate the Dash demo using Plotly express
-- Single dashboard page with narration and embedded IFRAME based charts
-- 
-
----
-
-# Change the folder structure - probable idea
-
-The basic idea 
-- Mono repo approach
-- Every project within the repo has its top level folder
-- Every project has its own **devops** folde
-- Where should you put the **app.py** file and what about **tests** folder
-
-```
----
-    |
-    |
-    |---webfrontend--|
-    |                |
-    |                |
-    |                |
-    |                |--devops
-    |                |
-    |                |
-    |                |--cicd.yml
-    
-    |
-    |
-    |---sharedinfra--
-    |                |
-    |                |
-    |                |--devops
-    |                |
-    |                |
-    |                |--cicd.yml
-    |
-    |
-    |---comonvariables.ps1
-```
----
-
-# Landing page
-- Use bootstrap nav bar
-- Have an **Abbout** page
-- How was this **site constructed page** and technologies involved, ci/cd
-- Plotly demo page
-- **PyScript** demo page
-- Links to all your articles on the landing page (link and summary)
 
 
 # Challenges with Dash and integrating with Flask
