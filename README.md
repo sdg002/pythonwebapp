@@ -184,3 +184,12 @@ https://chart-studio.plotly.com/~Dreamshot/8254/most-popular-content-management-
 
 https://chart-studio.plotly.com/feed/#/
 
+
+# Sample Dash applications
+
+## Mixing Dash and Flask
+https://ploomber.io/blog/dash-in-flask/
+
+
+## Lots of Dash examples here
+https://community.plotly.com/t/examples-of-multi-page-apps-with-dash-pages/66489

@@ -31,3 +31,31 @@ logging.basicConfig(level=logging.INFO)
 # dash_app = make_dash(app)
 # dash_app.layout = make_layout()
 # define_callbacks()
+
+#@app.route("/dash")
+
+
+def register_dash():
+    import dash
+    from dash import Dash, html, dcc
+    from flask import g
+
+    dash_app = Dash(use_pages=True, server=g.cur_app,  url_base_pathname="/dash/")
+
+    dash_app.layout = html.Div([
+        html.H1('Multi-page app with Dash Pages'),
+        html.Div([
+            html.Div(
+                dcc.Link(f"{page['name']} - {page['path']}", href=page["relative_path"])
+            ) for page in dash.page_registry.values()
+        ]),
+        html.Hr(),
+        dash.page_container
+    ])
+    logging.info("Register dash complete")
+
+with app.app_context():
+    from flask import g
+    g.cur_app = app
+    logging.info("Inside app_context")
+    register_dash()
