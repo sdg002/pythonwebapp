@@ -47,6 +47,10 @@ def register_dash():
         nav_bar.append(html.Span(" | "))
         nav_bar.append(dcc.Link(f"{page['name']} - {page['path']}", href=page["relative_path"]))
 
+    nav_bar.append(html.Span(" | "))
+    nav_bar.append(html.A("Back to home page", href="/"))
+
+
     dash_app.layout = html.Div([
         html.H1('Multi-page app with Dash Pages'),
         html.Div(nav_bar),
