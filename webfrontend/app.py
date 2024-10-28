@@ -42,17 +42,24 @@ def register_dash():
 
     dash_app = Dash(use_pages=True, server=g.cur_app,  url_base_pathname="/dash/")
 
+    nav_bar=[]
+    for page in dash.page_registry.values():
+        nav_bar.append(html.Span(" | "))
+        nav_bar.append(dcc.Link(f"{page['name']} - {page['path']}", href=page["relative_path"]))
+
     dash_app.layout = html.Div([
         html.H1('Multi-page app with Dash Pages'),
-        html.Div([
-            html.Div(
-                dcc.Link(f"{page['name']} - {page['path']}", href=page["relative_path"])
-            ) for page in dash.page_registry.values()
-        ]),
+        html.Div(nav_bar),
         html.Hr(),
         dash.page_container
     ])
     logging.info("Register dash complete")
+
+        # html.Div([
+        #     html.Div(
+        #         dcc.Link(f"{page['name']} - {page['path']}", href=page["relative_path"])
+        #     ) for page in dash.page_registry.values()
+        # ]),
 
 with app.app_context():
     from flask import g
