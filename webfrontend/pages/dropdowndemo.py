@@ -16,11 +16,14 @@ def update_display(country: str):
     logging.info(f"Inside update_dislay {country}")
     return country
 
-countres=["USA","UK", "Canada" ,"France"]
-output_layout=[html.Span("Selected country:"),html.Span(id='country-output'),]
-layout = html.Div([
-    html.H1('This is a page with Drop down'),
-    html.Div('Select a country.'),
-    dcc.Dropdown(countres, 'Canada', id='id-dropdown-country'),
-    html.Div(children=output_layout),
-])
+def layout():
+    logging.info("Inside layout function")
+    countres=["USA","UK", "Canada" ,"France"]
+    output_layout=[html.Span("Selected country:"),html.Span(id='country-output'),]
+    layout = html.Div([
+        html.H1('This is a page with Drop down'),
+        html.Div('Select a country.'),
+        dcc.Dropdown(countres, 'Canada', id='id-dropdown-country'),
+        html.Div(children=output_layout),
+    ])
+    return layout

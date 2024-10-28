@@ -187,9 +187,17 @@ https://chart-studio.plotly.com/feed/#/
 
 # Sample Dash applications
 
+## Official documentation
+https://dash.plotly.com/urls (see layout functions or layout variable)
+
 ## Mixing Dash and Flask
 https://ploomber.io/blog/dash-in-flask/
 
 
 ## Lots of Dash examples here
 https://community.plotly.com/t/examples-of-multi-page-apps-with-dash-pages/66489
+
+## Storing data between callbacks
+https://dash.plotly.com/sharing-data-between-callbacks
+
+
