@@ -17,9 +17,10 @@ def update_display(country: str):
     return country
 
 countres=["USA","UK", "Canada" ,"France"]
+output_layout=[html.Span("Selected country:"),html.Span(id='country-output'),]
 layout = html.Div([
     html.H1('This is a page with Drop down'),
     html.Div('Select a country.'),
     dcc.Dropdown(countres, 'Canada', id='id-dropdown-country'),
-    html.Div(id='country-output'),
+    html.Div(children=output_layout),
 ])
