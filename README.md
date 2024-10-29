@@ -83,8 +83,8 @@ Looks like a sensible approach to keep compexity low
 https://stackoverflow.com/questions/74762322/integrating-dash-and-flask-by-inserting-dash-chart-into-div-block-of-flask-templ
 
 
-## Lesson - Multiple Dash instances - What did I try in the app.py and did not owrk
-This does not work. You can only create a single instance of Dash
+## Lesson - Multiple Dash instances - What did I try in the app.py and did not work
+This does not work. You can only create a single instance of Dash. You will have to use the "multi-page" approach (see far below)
 
 ```python
 #First dash page registration
@@ -183,4 +183,21 @@ https://chart-studio.plotly.com/~Dreamshot/8254/most-popular-content-management-
 # Public gallery of Plotly (Similar to JSFiddle)
 
 https://chart-studio.plotly.com/feed/#/
+
+
+# Sample Dash applications
+
+## Official documentation (Multi-page support)
+https://dash.plotly.com/urls (**Important!** see layout functions or layout variable)
+
+## Mixing Dash and Flask
+https://ploomber.io/blog/dash-in-flask/
+
+
+## Lots of Dash examples here
+https://community.plotly.com/t/examples-of-multi-page-apps-with-dash-pages/66489
+
+## Storing data between callbacks
+https://dash.plotly.com/sharing-data-between-callbacks
+
 
