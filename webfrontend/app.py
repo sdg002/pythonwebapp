@@ -11,6 +11,8 @@ from views.plotlydemo import plotly_blue_print
 from views.formpostback import form_post_back
 from views.plotlyadvanced import plotly_advanced_blue_print
 from views.plotlydemosubplots import plotly_subplot_blue_print
+from views.cache_test import cache_test_blue_print
+import lib as lib
 
 
 def create_flask_app()->Flask:
@@ -23,7 +25,14 @@ def create_flask_app()->Flask:
     app.register_blueprint(form_post_back)
     app.register_blueprint(plotly_advanced_blue_print)
     app.register_blueprint(plotly_subplot_blue_print)
+    app.register_blueprint(cache_test_blue_print)
+    lib.FLASK_APP = app
     return app
+
+def init_cache(flask_app:Flask):
+    flask_app.config["DEBUG"]=True
+    flask_app.config["CACHE_TYPE"]="SimpleCache"
+    logging.info("Configuring of cache complete")
 
 def register_dash():
     import dash
@@ -58,6 +67,7 @@ def register_dash():
 
 logging.basicConfig(level=logging.INFO)
 app = create_flask_app()
+init_cache(flask_app=app)
 
 with app.app_context():
     from flask import g
