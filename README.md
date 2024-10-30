@@ -43,6 +43,20 @@
 ```
 ---
 
+# Debugging the Flask app
+
+## Option-1-Use the Launch Settings
+This uses the out of box VS Code Flask debugger
+
+## Option-2-Run flask from Terminal
+
+Use the following option when you do not want to step into the code but want to keep reloading the changes. Useful to rapid feedback.
+
+```
+flask run --debug
+```
+
+---
 
 # Challenges with Dash and integrating with Flask
 
@@ -201,3 +215,6 @@ https://community.plotly.com/t/examples-of-multi-page-apps-with-dash-pages/66489
 https://dash.plotly.com/sharing-data-between-callbacks
 
 
+# Caching in Dash
+
+https://dash.plotly.com/performance#memoization
