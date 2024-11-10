@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Cached view demo{% endblock %}
+
+{% block header %}Cached view demo{% endblock %}
+
+{% block content %}
+  
+<h3>Flask view caching demo</h3> 
+<p>This demonstrates how to use out of box caching to cache the entire output of a View.
+    In this example, the contents will be cached for a period of about 30 seconds</p>
+
+<div>
+    <span>When was this page loaded?</span>:<strong>{{current_time}}</strong>
+</div>
+<div>
+  <span>When is the Cache expected to expire?</span>:<strong>{{expiry_time}}</strong>
+</div>
+{% endblock %}
