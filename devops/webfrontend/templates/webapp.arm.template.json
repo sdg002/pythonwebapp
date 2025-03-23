@@ -16,16 +16,15 @@
         },
         "linuxFxVersion": {
             "type": "string"
-        }
-        ,
-        "environment":{
+        },
+        "environment": {
             "type": "string"
         }
     },
     "variables": {},
     "resources": [
         {
-            "apiVersion": "2018-11-01",
+            "apiVersion": "2020-12-01",
             "name": "[parameters('name')]",
             "type": "Microsoft.Web/sites",
             "location": "[resourceGroup().location]",
@@ -36,13 +35,13 @@
                 "siteConfig": {
                     "appSettings": [
                         {
-                            "name" : "ENVIRONMENT",
-                            "value" : "[parameters('environment')]"
+                            "name": "ENVIRONMENT",
+                            "value": "[parameters('environment')]"
                         },
                         {
-                            "name" : "SCM_DO_BUILD_DURING_DEPLOYMENT",
-                            "value" : "1"
-                        }           
+                            "name": "SCM_DO_BUILD_DURING_DEPLOYMENT",
+                            "value": "1"
+                        }
                     ],
                     "linuxFxVersion": "[parameters('linuxFxVersion')]",
                     "alwaysOn": "[parameters('alwaysOn')]",
