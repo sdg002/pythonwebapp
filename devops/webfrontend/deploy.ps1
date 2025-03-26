@@ -57,10 +57,6 @@ az webapp up --name $Global:WebAppName
 Pop-Location
 
 Write-Host "Deployment-done"
-
-Write-Host "-------------------"
-Write-Host "Displaying directory structure"
-Get-ChildItem -Recurse -Path $env:PIPELINE_WORKSPACE  | Select-Object -Property FullName
 Write-Host "-------------------"
 
 
