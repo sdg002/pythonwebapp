@@ -2,7 +2,6 @@ param name string
 param hostingPlanName string
 param environment string
 var location = resourceGroup().location
-//param serverfarms_saurabh_dasgupta_asp_7636_externalid string = '/subscriptions/635a2074-cc31-43ac-bebe-2bcd67e1abfe/resourceGroups/rg-python-webapp-dev-uks/providers/Microsoft.Web/serverfarms/saurabh_dasgupta_asp_7636'
 
 resource hosting_plan 'Microsoft.Web/sites@2024-04-01' = {
   name: name
