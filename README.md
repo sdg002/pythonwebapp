@@ -43,6 +43,11 @@
 ```
 ---
 
+## Which folder to use for launching VS Code ?
+
+For best developer experience, launch the Flask web app using the **webfrontend** as the root folder. This gives you the opportunity to customize the lauch actions specifically for Flask.
+
+
 # Debugging the Flask app
 
 ## Option-1-Use the Launch Settings
