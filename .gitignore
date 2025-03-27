@@ -1,2 +1,6 @@
 .vs/*
 /**/__pycache__
+.vs
+.env
+.venv
+venv
