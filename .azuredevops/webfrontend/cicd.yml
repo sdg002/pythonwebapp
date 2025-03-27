@@ -1,0 +1,80 @@
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    exclude:
+      - docs/*
+
+pr:
+  paths:
+    exclude:
+      - /docs/*
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  - name: MajorVersion
+    value: 1
+  - name: MinorVersion
+    value: 0
+  - name: PatchNumber
+    value: 0
+  - name: PythonVersion
+    value: 3.9
+  - name: AzureServiceAccount
+    value: "azure pay as you go demo (sep 21)"
+
+name: $(MajorVersion).$(MinorVersion).$(PatchNumber).$(Rev:r)
+
+stages:
+  - stage: BUILD
+    jobs:
+      - job: BuildJob
+        steps:
+          - task: PowerShell@2
+            inputs:
+              targetType: "inline" # 'filePath' | 'inline'. Type. Default: filePath.
+              pwsh: true
+              script: |
+                Write-Host "Inside Build task" 
+                Write-Host "Displaying environment variables" 
+                dir env:
+
+          - task: UsePythonVersion@0
+            displayName: "Install Python $(PythonVersion)"
+            inputs:
+              versionSpec: $(PythonVersion)
+              addToPath: true
+
+          - task: ArchiveFiles@2
+            displayName: "Create a ZIP of the Python web app source"
+            inputs:
+              includeRootFolder: false
+              rootFolderOrFile: "webfrontend"
+              archiveFile: "$(Build.ArtifactStagingDirectory)/webappsourcecode/$(Build.BuildNumber).zip"
+              verbose: true
+
+          - task: PublishBuildArtifacts@1
+            displayName: "Publish Python source code"
+            inputs:
+              PathtoPublish: "$(build.artifactstagingdirectory)/webappsourcecode"
+              ArtifactName: "webappsourcecode"
+
+  - stage: DEV_DEPLOY
+    dependsOn: BUILD
+    variables:
+      - name: environment
+        value: dev
+    jobs:
+      - template: webapp-release-template.yaml
+
+  - stage: PROD_DEPLOY
+    dependsOn: DEV_DEPLOY
+    condition: eq(variables['build.sourceBranch'], 'refs/heads/main')
+    variables:
+      - name: environment
+        value: prod
+    jobs:
+      - template: webapp-release-template.yaml
