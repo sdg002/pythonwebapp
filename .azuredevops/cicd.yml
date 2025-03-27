@@ -52,7 +52,7 @@ stages:
             displayName: "Create a ZIP of the Python web app source"
             inputs:
               includeRootFolder: false
-              rootFolderOrFile: "webfrontend"
+              rootFolderOrFile: "src"
               archiveFile: "$(Build.ArtifactStagingDirectory)/webappsourcecode/$(Build.BuildNumber).zip"
               verbose: true
 
