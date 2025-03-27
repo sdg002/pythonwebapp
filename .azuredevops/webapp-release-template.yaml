@@ -1,34 +1,32 @@
-  jobs:
+jobs:
   - job: DeployJob
-    displayName: 'Deploy job-${{ variables.environment }}'
+    displayName: "Deploy job-${{ variables.environment }}"
     steps:
+      - task: DownloadPipelineArtifact@2
+        displayName: "Download Web App Source code artifact"
+        inputs:
+          buildType: "current"
+          artifactName: "webappsourcecode"
+          targetPath: "$(Pipeline.Workspace)/webappsourcecode-zip"
 
-    - task: DownloadPipelineArtifact@2
-      displayName: 'Download Web App Source code artifact'
-      inputs:
-        buildType: 'current' 
-        artifactName: 'webappsourcecode'
-        targetPath: '$(Pipeline.Workspace)/webappsourcecode-zip'
+      - task: ExtractFiles@1
+        displayName: "Extract source files"
+        inputs:
+          archiveFilePatterns: $(Pipeline.Workspace)/webappsourcecode-zip/*.zip
+          destinationFolder: $(Pipeline.Workspace)/webappsourcecode-extract/
 
-    - task: ExtractFiles@1
-      displayName: 'Extract source files'
-      inputs:
-        archiveFilePatterns: $(Pipeline.Workspace)/webappsourcecode-zip/*.zip
-        destinationFolder: $(Pipeline.Workspace)/webappsourcecode-extract/
+      - task: PowerShell@2
+        displayName: "Update version number"
+        inputs:
+          targetType: "filePath"
+          filePath: devops/webfrontend/replaceverversion.ps1
+          arguments: -version $(Build.BuildNumber) -file webfrontend/application_version.txt
+          pwsh: true
 
-    - task: PowerShell@2
-      displayName: 'Update version number'
-      inputs:
-        targetType: 'filePath'
-        filePath: devops/webfrontend/replaceverversion.ps1
-        arguments: -version $(Build.BuildNumber) -file webfrontend/application_version.txt
-        pwsh: true
-
-    - task: AzureCLI@2
-      displayName: 'Deploy web app $(ENVIRONMENT)'
-      inputs:
-        azureSubscription: $(AzureServiceAccount)
-        scriptType: pscore
-        scriptPath: devops/webfrontend/deploy.ps1
-        addSpnToEnvironment: true
-  
+      - task: AzureCLI@2
+        displayName: "Deploy web app $(ENVIRONMENT)"
+        inputs:
+          azureSubscription: $(AzureServiceAccount)
+          scriptType: pscore
+          scriptPath: devops/webfrontend/deploy.ps1
+          addSpnToEnvironment: true
