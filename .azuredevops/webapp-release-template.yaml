@@ -19,7 +19,7 @@ jobs:
         displayName: "Update version number"
         inputs:
           targetType: "filePath"
-          filePath: devops/webfrontend/replaceverversion.ps1
+          filePath: .azuredevops/replaceverversion.ps1
           arguments: -version $(Build.BuildNumber) -file webfrontend/application_version.txt
           pwsh: true
 
@@ -28,5 +28,5 @@ jobs:
         inputs:
           azureSubscription: $(AzureServiceAccount)
           scriptType: pscore
-          scriptPath: devops/webfrontend/deploy.ps1
+          scriptPath: .azuredevops/deploy.ps1
           addSpnToEnvironment: true
