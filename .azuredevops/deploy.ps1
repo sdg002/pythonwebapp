@@ -44,16 +44,17 @@ Deploy the Python code
 #>
 Write-Host "Going to deploy upload Python code to the web app $Global:WebAppName"
 $SourceFolder = "src"
-$SourceCodeLocaiton = Join-Path -Path $PSScriptRoot -ChildPath "../$SourceFolder"
+$SourceCodeLocation = Join-Path -Path $PSScriptRoot -ChildPath "../$SourceFolder"
+$SourceCodeLocation = Resovle-Path -Path $SourceCodeLocation
 
-$DotAzureFolder = Join-Path -Path $SourceCodeLocaiton -ChildPath ".azure"  #This is a cache folder created by Azure Cli
+$DotAzureFolder = Join-Path -Path $SourceCodeLocation -ChildPath ".azure"  #This is a cache folder created by Azure Cli created on local desktops
 if (Test-Path -Path $DotAzureFolder) {
     Remove-Item -Path $DotAzureFolder -Recurse -Force -Verbose
 }
 
-Write-Host "The Python code will be deployed from the location $SourceCodeLocaiton"
-Push-Location -Path $SourceCodeLocaiton
-az webapp up --name $Global:WebAppName
+Write-Host "The Python code will be deployed from the location $SourceCodeLocation"
+Push-Location -Path $SourceCodeLocation
+az webapp up --name $Global:WebAppName --runtime "PYTHON:3.9"
 Pop-Location
 
 Write-Host "Deployment-done"
