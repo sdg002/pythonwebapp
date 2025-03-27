@@ -45,7 +45,7 @@ Deploy the Python code
 Write-Host "Going to deploy upload Python code to the web app $Global:WebAppName"
 $SourceFolder = "src"
 $SourceCodeLocation = Join-Path -Path $PSScriptRoot -ChildPath "../$SourceFolder"
-$SourceCodeLocation = Resovle-Path -Path $SourceCodeLocation
+$SourceCodeLocation = Resolve-Path -Path $SourceCodeLocation
 
 $DotAzureFolder = Join-Path -Path $SourceCodeLocation -ChildPath ".azure"  #This is a cache folder created by Azure Cli created on local desktops
 if (Test-Path -Path $DotAzureFolder) {
