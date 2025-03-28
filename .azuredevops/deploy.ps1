@@ -43,17 +43,22 @@ RaiseCliError -message "Failed to deploy web app $Global:WebAppName"
 Deploy the Python code
 #>
 Write-Host "Going to deploy upload Python code to the web app $Global:WebAppName"
-$SourceFolder = "webfrontend"
-$SourceCodeLocaiton = Join-Path -Path $PSScriptRoot -ChildPath "../../$SourceFolder"
+$SourceFolder = "src"
+$SourceCodeLocation = Join-Path -Path $PSScriptRoot -ChildPath "../$SourceFolder"
+$SourceCodeLocation = Resolve-Path -Path $SourceCodeLocation
+Write-Host "Source code location: $SourceCodeLocation"
+$Requirements = Join-Path -Path $SourceCodeLocation -ChildPath "../requirements.txt"
+Copy-item -Path $Requirements -Destination $SourceCodeLocation -Force -Verbose
+Write-Host "Copied requirements.txt to $SourceCodeLocation because Azure Web App deployment will build the Python environment"
 
-$DotAzureFolder = Join-Path -Path $SourceCodeLocaiton -ChildPath ".azure"  #This is a cache folder created by Azure Cli
+$DotAzureFolder = Join-Path -Path $SourceCodeLocation -ChildPath ".azure"  #This is a cache folder created by Azure Cli created on local desktops
 if (Test-Path -Path $DotAzureFolder) {
     Remove-Item -Path $DotAzureFolder -Recurse -Force -Verbose
 }
 
-Write-Host "The Python code will be deployed from the location $SourceCodeLocaiton"
-Push-Location -Path $SourceCodeLocaiton
-az webapp up --name $Global:WebAppName
+Write-Host "The Python code will be deployed from the location $SourceCodeLocation"
+Push-Location -Path $SourceCodeLocation
+az webapp up --name $Global:WebAppName --runtime "PYTHON:3.10"
 Pop-Location
 
 Write-Host "Deployment-done"

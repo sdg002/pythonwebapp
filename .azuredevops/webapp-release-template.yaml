@@ -1,0 +1,32 @@
+jobs:
+  - job: DeployJob
+    displayName: "Deploy job-${{ variables.environment }}"
+    steps:
+      - task: DownloadPipelineArtifact@2
+        displayName: "Download Web App Source code artifact"
+        inputs:
+          buildType: "current"
+          artifactName: "webappsourcecode"
+          targetPath: "$(Pipeline.Workspace)/webappsourcecode-zip"
+
+      - task: ExtractFiles@1
+        displayName: "Extract source files"
+        inputs:
+          archiveFilePatterns: $(Pipeline.Workspace)/webappsourcecode-zip/*.zip
+          destinationFolder: $(Pipeline.Workspace)/webappsourcecode-extract/
+
+      - task: PowerShell@2
+        displayName: "Update version number"
+        inputs:
+          targetType: "filePath"
+          filePath: .azuredevops/replaceverversion.ps1
+          arguments: -version $(Build.BuildNumber) -file src/application_version.txt
+          pwsh: true
+
+      - task: AzureCLI@2
+        displayName: "Deploy web app $(ENVIRONMENT)"
+        inputs:
+          azureSubscription: $(AzureServiceAccount)
+          scriptType: pscore
+          scriptPath: .azuredevops/deploy.ps1
+          addSpnToEnvironment: true

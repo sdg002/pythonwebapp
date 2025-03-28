@@ -17,24 +17,24 @@
 # Source code structure
 
 ## Top level folders
-- **devops**-ARM template and YAML template files
-- **webfrontend**-Python source code
+- **.azuredevops**-ARM template and YAML template files
+- **src**-Python source code
 - **docs**-Documentation, picture files
 
 ## Detailed structure
 
 ```
----devops
+---.azuredevops
     |
     |---deploy.ps1
     |
-    |---armtemplates
+    |---templates
     |        |
     |        |
-    |        ----[web app, app insight, key vault, storage account perhaps]
+    |        ----[bicep templates for web app and service plan]
     |
     |
----webrontend
+---src
     |
     |
     |---app.py
