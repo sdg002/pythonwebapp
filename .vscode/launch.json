@@ -15,9 +15,7 @@
                 "PYTHONPATH": "${workspaceFolder};${workspaceFolder}/src"
             },
             "args": [
-                "run",
-                "--no-debugger",
-                "--no-reload"
+                "run"
             ],
             "jinja": true,
             "autoStartBrowser": false

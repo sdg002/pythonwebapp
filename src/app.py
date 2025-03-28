@@ -71,7 +71,11 @@ def register_dash():
         #     ) for page in dash.page_registry.values()
         # ]),
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s | %(levelname)s | %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S')
+
 app = create_flask_app()
 init_cache(flask_app=app)
 register_blue_prints(flask_app=app)
