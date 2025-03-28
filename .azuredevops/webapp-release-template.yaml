@@ -20,7 +20,7 @@ jobs:
         inputs:
           targetType: "filePath"
           filePath: .azuredevops/replaceverversion.ps1
-          arguments: -version $(Build.BuildNumber) -file src/modules/__init__.py
+          arguments: -version $(Build.BuildNumber) -file src/lib/__init__.py
           pwsh: true
 
       - task: AzureCLI@2
