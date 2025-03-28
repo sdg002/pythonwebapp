@@ -4,6 +4,7 @@ import logging
 import lib
 import datetime as dt
 import time
+from flask import g
 
 dash.register_page(__name__)
 
@@ -14,7 +15,7 @@ def update_drop_down(country: str):
     logging.info(f"Inside update_dislay {country}")
     return country
 
-@lib.FLASK_CACHE.cached(timeout=30)
+@g.cache.cached(timeout=30)
 def some_long_running_function_to_generate_data()->list[str]:
     logging.info("Begin-generate_data")
     items=[]
