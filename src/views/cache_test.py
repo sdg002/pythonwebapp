@@ -3,10 +3,12 @@ from flask import Blueprint
 import flask
 import datetime as dt
 import lib
+import flask
+
 cache_test_blue_print = Blueprint(name="cache_test", import_name=__name__)
 
 @cache_test_blue_print.route("/cached_view")
-@lib.FLASK_CACHE.cached(timeout=30)
+@flask.g.cache.cached(timeout=30)
 def cache_test():
     now=dt.datetime.now()
     expiry = now+ dt.timedelta(seconds=30)
