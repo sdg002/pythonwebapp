@@ -7,6 +7,32 @@ from flask import g
 
 
 class DashHelper:
+
+    @classmethod
+    def register_dash_using_nav_bar(cls, flask_app: Flask):
+        logging.info("Inside register_dash_using_nav")
+        dash_app = Dash(use_pages=True, server=flask_app,
+                        url_base_pathname="/dash/", external_stylesheets=[dbc.themes.BOOTSTRAP])
+        nav_bar_links = []
+        for page in dash.page_registry.values():
+            logging.info(f"Found dash page {page['path']}")
+            nav_item = dbc.NavLink(page["name"], href=page["relative_path"])
+            nav_bar_links.append(nav_item)
+        nav_bar_links.append(dbc.NavLink(
+            "Back to root landing page", href="/", external_link=True))
+
+        links_container = dbc.Nav(nav_bar_links)
+        bootstrap_navbar = dbc.Navbar(
+            links_container, color="primary", sticky="top", dark=True)
+
+        dash_app.layout = html.Div([
+            dcc.Location(id='url', refresh=False),
+            bootstrap_navbar,
+            dash.page_container
+        ])
+        logging.info("Register dash complete")
+        return dash_app
+
     @classmethod
     def register_dash_using_nav(cls, flask_app: Flask):
         logging.info("Inside register_dash_using_nav")
