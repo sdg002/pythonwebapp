@@ -86,8 +86,7 @@ def before_app_request():
 @app.context_processor
 def inject_common_values():
     return {
-        'environment': os.environ.get('ENVIRONMENT', None),
-        'key2': 'value2',
+        'environment': os.environ.get('ENVIRONMENT', None)
         # Add more key-value pairs as needed
     }
 with app.app_context():
