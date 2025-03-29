@@ -17,6 +17,8 @@ class DashHelper:
             logging.info(f"Found dash page {page['path']}")
             nav_item = dbc.NavLink(page["name"], href=page["relative_path"])
             nav_bar_links.append(nav_item)
+        nav_bar_links.append(dbc.NavLink(
+            "Back to root landing page", href="/", external_link=True))
         bootstrap_navbar = dbc.Nav(nav_bar_links)
 
         dash_app.layout = html.Div([
@@ -36,7 +38,6 @@ class DashHelper:
         nav_bar_links = []
         for page in dash.page_registry.values():
             logging.info(f"Found dash page {page['path']}")
-            # nav_bar.append(dcc.Link(f"{page['name']} - {page['path']}", href=page["relative_path"]))
             nav_item = dbc.NavItem(dbc.NavLink(
                 page["name"], href=page["relative_path"]))
             nav_bar_links.append(nav_item)

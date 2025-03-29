@@ -228,10 +228,36 @@ https://dash.plotly.com/performance#memoization
 ---
 # Navbar in Dash
 
-## SimpleNaveBar
-??
+## dbc.NavbarSimple
 
-## Blah 1
+```python
+import dash_bootstrap_components as dbc
+
+navbar = dbc.NavbarSimple(
+    children=[
+        dbc.NavItem(dbc.NavLink("Page 1", href="#")),
+        dbc.DropdownMenu(
+            children=[
+                dbc.DropdownMenuItem("More pages", header=True),
+                dbc.DropdownMenuItem("Page 2", href="#"),
+                dbc.DropdownMenuItem("Page 3", href="#"),
+            ],
+            nav=True,
+            in_navbar=True,
+            label="More",
+        ),
+    ],
+    brand="NavbarSimple",
+    brand_href="#",
+    color="primary",
+    dark=True,
+)
+```
+
+https://dash-bootstrap-components.opensource.faculty.ai/docs/components/navbar/
+
+
+## dbc.Nav
 
 ```python
 import dash_bootstrap_components as dbc
