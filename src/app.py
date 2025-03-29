@@ -56,9 +56,9 @@ def register_dash():
     nav_bar.append(html.Span(" | "))
     nav_bar.append(html.A("Back to root landing page", href="/"))
 
-
+    banner=f'Multi-page app with Dash Pages ({os.environ.get("ENVIRONMENT")})'
     dash_app.layout = html.Div([
-        html.H1('Multi-page app with Dash Pages'),
+        html.H1(banner),
         html.Div(nav_bar),
         html.Hr(),
         dash.page_container
