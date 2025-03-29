@@ -1,8 +1,9 @@
 import dash
 from dash import html,dcc
 import logging
+import os
 
-dash.register_page(__name__)
+dash.register_page(__name__,title=f'Dropdown demo ({os.environ.get("ENVIRONMENT")})')
 
 #
 # 1)Respond to the change in a call back

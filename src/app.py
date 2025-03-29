@@ -2,6 +2,7 @@
 Flask enty point
 """
 import logging
+import os
 from flask import Flask
 from flask import g
 from flask_caching import Cache
@@ -55,20 +56,15 @@ def register_dash():
     nav_bar.append(html.Span(" | "))
     nav_bar.append(html.A("Back to root landing page", href="/"))
 
-
+    banner=f'Multi-page app with Dash Pages ({os.environ.get("ENVIRONMENT")})'
     dash_app.layout = html.Div([
-        html.H1('Multi-page app with Dash Pages'),
+        html.H1(banner),
         html.Div(nav_bar),
         html.Hr(),
         dash.page_container
     ])
     logging.info("Register dash complete")
 
-        # html.Div([
-        #     html.Div(
-        #         dcc.Link(f"{page['name']} - {page['path']}", href=page["relative_path"])
-        #     ) for page in dash.page_registry.values()
-        # ]),
 
 logging.basicConfig(
     level=logging.INFO,
@@ -81,6 +77,13 @@ cache=init_cache(flask_app=app)
 @app.before_request
 def before_app_request():
     g.cache=cache
+
+@app.context_processor
+def inject_common_values():
+    return {
+        'environment': os.environ.get('ENVIRONMENT', None)
+        # Add more key-value pairs as needed
+    }
 
 with app.app_context():
     g.cur_app = app
