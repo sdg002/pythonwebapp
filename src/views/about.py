@@ -12,4 +12,4 @@ def version():
     current_version = lib.__version__
     logging.info(f"Environment is {current_environment}")
     logging.info(f"Application version is {current_version}")
-    return render_template("about.html", version=current_version, environment=current_environment)
+    return render_template("about.html", version=current_version)

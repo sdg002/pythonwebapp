@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,79 +9,82 @@
   <title>{% block title %}{% endblock %}</title>
   <link rel="stylesheet" href="static/styles.css">
 </head>
+
 <body>
 
-<nav class="navbar navbar-expand-sm bg-light">
-  <div class="container-fluid">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/about">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/dash">Dash demo</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Plotly demos</a>
-        <ul class="dropdown-menu">
-          <li>
-            <a class="dropdown-item" href="/plotly">Simple Plotly chart</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="/plotlyadvanced">Plotly demo with a drop down selector</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="/plotlysubplots">Plotly sub-plots</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="/plotlyadvancedhoverbothaxis">Plotly hover demo (X and Y)</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="/plotlyadvancedxaxis">Plotly hover demo (X axis only)</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="/plotlyadvancedhovertemplate">Custom hover template</a>
-          </li>
-        </ul>        
-      </li>
+  <nav class="navbar navbar-expand-sm bg-light">
+    <div class="container-fluid">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/dash">Dash demo</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Plotly demos</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="/plotly">Simple Plotly chart</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/plotlyadvanced">Plotly demo with a drop down selector</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/plotlysubplots">Plotly sub-plots</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/plotlyadvancedhoverbothaxis">Plotly hover demo (X and Y)</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/plotlyadvancedxaxis">Plotly hover demo (X axis only)</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/plotlyadvancedhovertemplate">Custom hover template</a>
+            </li>
+          </ul>
+        </li>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Basic form submission demos</a>
-        <ul class="dropdown-menu">
-          <li>
-            <a class="nav-link" href="/formpostback">Form submission</a>
-          </li>
-          <li>
-            <a class="nav-link" href="/formpostbackusinggetmethod">Form submission(GET method)</a>
-          </li>
-        </ul>        
-      </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Basic form submission
+            demos</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="nav-link" href="/formpostback">Form submission</a>
+            </li>
+            <li>
+              <a class="nav-link" href="/formpostbackusinggetmethod">Form submission(GET method)</a>
+            </li>
+          </ul>
+        </li>
 
-  
-      <li class="nav-item">
-        <a class="nav-link" href="/cached_view">Cached View</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/link2">Link 2</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/link3">Link 3</a>
-      </li>
-    </ul>
-    <span class="navbar-text">
-        {% block header %}Header{% endblock %}        
-    </span>
-  </div>
-</nav>
 
-<div class="container-fluid mt-3">
+        <li class="nav-item">
+          <a class="nav-link" href="/cached_view">Cached View</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/link2">Link 2</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/link3">Link 3</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        {% block header %}Header{% endblock %}-{{environment}}
+      </span>
+    </div>
+  </nav>
+
+  <div class="container-fluid mt-3">
     {% block content %}
     {% endblock %}
 
 
-</div>
+  </div>
 
 </body>
+
 </html>

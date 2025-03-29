@@ -2,6 +2,7 @@
 Flask enty point
 """
 import logging
+import os
 from flask import Flask
 from flask import g
 from flask_caching import Cache
@@ -82,6 +83,13 @@ cache=init_cache(flask_app=app)
 def before_app_request():
     g.cache=cache
 
+@app.context_processor
+def inject_common_values():
+    return {
+        'environment': os.environ.get('ENVIRONMENT', None),
+        'key2': 'value2',
+        # Add more key-value pairs as needed
+    }
 with app.app_context():
     g.cur_app = app
     g.cache=cache
