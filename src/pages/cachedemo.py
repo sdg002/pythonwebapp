@@ -5,8 +5,9 @@ import lib
 import datetime as dt
 import time
 from flask import g
+import os
 
-dash.register_page(__name__)
+dash.register_page(__name__, title=f'Cache demo ({os.environ.get("ENVIRONMENT")})')
 
 @dash.callback(
     dash.Output('selected-item-output', 'children'),
