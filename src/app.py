@@ -65,11 +65,6 @@ def register_dash():
     ])
     logging.info("Register dash complete")
 
-        # html.Div([
-        #     html.Div(
-        #         dcc.Link(f"{page['name']} - {page['path']}", href=page["relative_path"])
-        #     ) for page in dash.page_registry.values()
-        # ]),
 
 logging.basicConfig(
     level=logging.INFO,
@@ -89,6 +84,7 @@ def inject_common_values():
         'environment': os.environ.get('ENVIRONMENT', None)
         # Add more key-value pairs as needed
     }
+
 with app.app_context():
     g.cur_app = app
     g.cache=cache
