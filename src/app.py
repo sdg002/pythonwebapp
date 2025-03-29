@@ -17,9 +17,10 @@ from views.plotlyadvanced import plotly_advanced_blue_print
 from views.plotlydemosubplots import plotly_subplot_blue_print
 
 
-def create_flask_app()->Flask:
-    app = Flask(__name__, static_folder='static',static_url_path='/static/')
+def create_flask_app() -> Flask:
+    app = Flask(__name__, static_folder='static', static_url_path='/static/')
     return app
+
 
 def register_blue_prints(flask_app: Flask):
     from views.cache_test import cache_test_blue_print
@@ -33,34 +34,48 @@ def register_blue_prints(flask_app: Flask):
     flask_app.register_blueprint(plotly_subplot_blue_print)
     flask_app.register_blueprint(cache_test_blue_print)
 
-def init_cache(flask_app:Flask)->Cache:
-    flask_app.config["DEBUG"]=True
-    flask_app.config["CACHE_TYPE"]="SimpleCache"
-    flask_app.config['CACHE_DEFAULT_TIMEOUT']=300
+
+def init_cache(flask_app: Flask) -> Cache:
+    flask_app.config["DEBUG"] = True
+    flask_app.config["CACHE_TYPE"] = "SimpleCache"
+    flask_app.config['CACHE_DEFAULT_TIMEOUT'] = 300
     in_memory_cache = Cache(app=app)
     logging.info("Configuring of cache complete")
     return in_memory_cache
 
-def register_dash(flask_app:Flask):
+
+def register_dash(flask_app: Flask):
     import dash
     from dash import Dash, html, dcc
     from flask import g
     logging.info("Inside register_dash")
-    dash_app = Dash(use_pages=True, server=flask_app,  url_base_pathname="/dash/",external_stylesheets=[dbc.themes.BOOTSTRAP])
+    dash_app = Dash(use_pages=True, server=flask_app,
+                    url_base_pathname="/dash/", external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-    nav_bar_links=[]
+    nav_bar_links = []
     for page in dash.page_registry.values():
         nav_bar_links.append(html.Span(" | "))
         logging.info(f"Found dash page {page['path']}")
-        #nav_bar.append(dcc.Link(f"{page['name']} - {page['path']}", href=page["relative_path"]))
-        nav_item = dbc.NavItem(dbc.NavLink(page["name"], href=page["relative_path"]))
+        # nav_bar.append(dcc.Link(f"{page['name']} - {page['path']}", href=page["relative_path"]))
+        nav_item = dbc.NavItem(dbc.NavLink(
+            page["name"], href=page["relative_path"]))
         nav_bar_links.append(nav_item)
-    bootstrap_navbar = dbc.NavbarSimple(children=nav_bar_links,brand="My App", color="primary", dark=True, sticky="top")
+    # nav_bar_links.append(dbc.NavLink("Back to root landing page", href="/"))
+    # Paths that aren't prefixed with requests_pathname_prefix are not supported.
+    bootstrap_navbar = dbc.NavbarSimple(
+        children=nav_bar_links,
+        brand="My App",
+        color="primary",
+        dark=False,
+        sticky="top",
+        links_left=True,
+        brand_href="/",
+        brand_external_link="/")
 
-    #nav_bar_links.append(html.Span(" | "))
-    #nav_bar_links.append(html.A("Back to root landing page", href="/"))
+    # nav_bar_links.append(html.Span(" | "))
+    # nav_bar_links.append(html.A("Back to root landing page", href="/"))
 
-    #banner=f'Multi-page app with Dash Pages ({os.environ.get("ENVIRONMENT")})'
+    # banner=f'Multi-page app with Dash Pages ({os.environ.get("ENVIRONMENT")})'
     dash_app.layout = html.Div([
         dcc.Location(id='url', refresh=False),
         bootstrap_navbar,
@@ -75,11 +90,13 @@ logging.basicConfig(
     datefmt='%Y-%m-%d %H:%M:%S')
 
 app = create_flask_app()
-cache=init_cache(flask_app=app)
+cache = init_cache(flask_app=app)
+
 
 @app.before_request
 def before_app_request():
-    g.cache=cache
+    g.cache = cache
+
 
 @app.context_processor
 def inject_common_values():
@@ -88,10 +105,10 @@ def inject_common_values():
         # Add more key-value pairs as needed
     }
 
+
 with app.app_context():
     g.cur_app = app
-    g.cache=cache
+    g.cache = cache
     logging.info("Inside app_context")
     register_blue_prints(flask_app=app)
     register_dash(flask_app=app)
-

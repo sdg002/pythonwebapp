@@ -223,3 +223,16 @@ https://dash.plotly.com/sharing-data-between-callbacks
 # Caching in Dash
 
 https://dash.plotly.com/performance#memoization
+
+# All other references
+
+## Python formatter in VS Code
+Configuring a formatter will tidy up the formatting when the file is saved. Using **autopep8** for this project.
+https://code.visualstudio.com/docs/python/formatting
+
+
+## Hello Dash live demo
+https://hellodash.pythonanywhere.com/
+
+## Dash Cheat Sheet (with BootStrap)
+https://dashcheatsheet.pythonanywhere.com/
