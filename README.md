@@ -224,6 +224,34 @@ https://dash.plotly.com/sharing-data-between-callbacks
 
 https://dash.plotly.com/performance#memoization
 
+
+---
+# Navbar in Dash
+
+## SimpleNaveBar
+??
+
+## Blah 1
+
+```python
+import dash_bootstrap_components as dbc
+
+nav = dbc.Nav(
+    [
+        dbc.NavLink("Active", active=True, href="#"),
+        dbc.NavLink("A link", href="#"),
+        dbc.NavLink("Another link", href="#"),
+        dbc.NavLink("Disabled", disabled=True, href="#"),
+    ]
+)
+```
+
+![alt text](docs/images/just_nav.png)
+
+https://dash-bootstrap-components.opensource.faculty.ai/docs/components/nav/#
+
+---
+
 # All other references
 
 ## Python formatter in VS Code
