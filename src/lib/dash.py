@@ -4,6 +4,7 @@ import logging
 import dash
 from dash import Dash, html, dcc
 from flask import g
+from dash.dependencies import Input, Output
 
 
 class DashHelper:
@@ -15,15 +16,18 @@ class DashHelper:
                         url_base_pathname="/dash/", external_stylesheets=[dbc.themes.BOOTSTRAP])
         nav_bar_links = []
         for page in dash.page_registry.values():
-            logging.info(f"Found dash page {page['path']}")
+            logging.info(
+                f"Found dash page path={page['path']} , relative_path={page['relative_path']}")
             nav_item = dbc.NavLink(page["name"], href=page["relative_path"])
             nav_bar_links.append(nav_item)
+
         nav_bar_links.append(dbc.NavLink(
             "Back to root landing page", href="/", external_link=True))
 
-        links_container = dbc.Nav(nav_bar_links)
+        links_container = dbc.Nav(nav_bar_links, pills=True)
         bootstrap_navbar = dbc.Navbar(
             links_container, color="primary", sticky="top", dark=True)
+        # color="light", "default" was not good. The text in the links did not show up at all
 
         dash_app.layout = html.Div([
             dcc.Location(id='url', refresh=False),
@@ -79,9 +83,6 @@ class DashHelper:
             brand_href="/",
             brand_external_link=True)
 
-        # nav_bar_links.append(html.Span(" | "))
-        # nav_bar_links.append(html.A("Back to root landing page", href="/"))
-
         # banner=f'Multi-page app with Dash Pages ({os.environ.get("ENVIRONMENT")})'
         dash_app.layout = html.Div([
             dcc.Location(id='url', refresh=False),
@@ -90,3 +91,14 @@ class DashHelper:
         ])
         logging.info("Register dash complete")
         return dash_app
+
+    # Callback is fired, cannot be a class method
+    # But, you will have to return the a tuple of CSS class names for all the nav items
+    # Challenge - it becomes a complex if-else statement to determine which nav item is active
+    # @dash.callback([dash.Input('url', 'pathname')])
+    # def update_active_link(pathname: str) -> str:
+    #     logging.info(f"Inside update_active_link with pathname={pathname}")
+    #     # Update the active link based on the current pathname
+    #     for page in dash.page_registry.values():
+    #         if pathname == page["relative_path"]:
+    #             return page["name"]

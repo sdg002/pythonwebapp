@@ -290,3 +290,6 @@ https://hellodash.pythonanywhere.com/
 
 ## Dash Cheat Sheet (with BootStrap)
 https://dashcheatsheet.pythonanywhere.com/
+
+## Tabs
+https://dash-bootstrap-components.opensource.faculty.ai/docs/components/tabs/
