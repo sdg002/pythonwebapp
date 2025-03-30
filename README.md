@@ -223,3 +223,73 @@ https://dash.plotly.com/sharing-data-between-callbacks
 # Caching in Dash
 
 https://dash.plotly.com/performance#memoization
+
+
+---
+# Navbar in Dash
+
+## dbc.NavbarSimple
+
+```python
+import dash_bootstrap_components as dbc
+
+navbar = dbc.NavbarSimple(
+    children=[
+        dbc.NavItem(dbc.NavLink("Page 1", href="#")),
+        dbc.DropdownMenu(
+            children=[
+                dbc.DropdownMenuItem("More pages", header=True),
+                dbc.DropdownMenuItem("Page 2", href="#"),
+                dbc.DropdownMenuItem("Page 3", href="#"),
+            ],
+            nav=True,
+            in_navbar=True,
+            label="More",
+        ),
+    ],
+    brand="NavbarSimple",
+    brand_href="#",
+    color="primary",
+    dark=True,
+)
+```
+
+https://dash-bootstrap-components.opensource.faculty.ai/docs/components/navbar/
+
+
+## dbc.Nav
+
+```python
+import dash_bootstrap_components as dbc
+
+nav = dbc.Nav(
+    [
+        dbc.NavLink("Active", active=True, href="#"),
+        dbc.NavLink("A link", href="#"),
+        dbc.NavLink("Another link", href="#"),
+        dbc.NavLink("Disabled", disabled=True, href="#"),
+    ]
+)
+```
+
+![alt text](docs/images/just_nav.png)
+
+https://dash-bootstrap-components.opensource.faculty.ai/docs/components/nav/#
+
+---
+
+# All other references
+
+## Python formatter in VS Code
+Configuring a formatter will tidy up the formatting when the file is saved. Using **autopep8** for this project.
+https://code.visualstudio.com/docs/python/formatting
+
+
+## Hello Dash live demo
+https://hellodash.pythonanywhere.com/
+
+## Dash Cheat Sheet (with BootStrap)
+https://dashcheatsheet.pythonanywhere.com/
+
+## Tabs
+https://dash-bootstrap-components.opensource.faculty.ai/docs/components/tabs/
