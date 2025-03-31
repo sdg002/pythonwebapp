@@ -19,6 +19,12 @@ class DashHelper:
             logging.info(
                 f"Found dash page path={page['path']} , relative_path={page['relative_path']}")
             nav_item = dbc.NavLink(page["name"], href=page["relative_path"])
+            if page["path"] == "/analytics":
+                nav_item = dbc.NavLink(
+                    page["name"], href=page["relative_path"], active=True)
+            else:
+                nav_item = dbc.NavLink(
+                    page["name"], href=page["relative_path"])
             nav_bar_links.append(nav_item)
 
         nav_bar_links.append(dbc.NavLink(
