@@ -36,7 +36,9 @@ a.nav-link:active {
     font-weight: bold;
 }
 
+/*this works but only when the link has focus. Click anywhere else on the page and the focus is lost,so is the style
 a.nav-link:focus {
     color: white;
     font-weight: bold;
 }
+*/
