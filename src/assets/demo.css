@@ -23,15 +23,23 @@ a.active {
     font-weight: normal;
 }
 
-/*this did not work
+/*this did not work, but when active=True, it works!! except for color*/
 .nav-link.active {
-    color: red;
+    color: yellow;
     font-weight: bold;
+    font-style: italic;
 }
-*/
+
 
 /* this works, but only when the link is in a pressed state, disppears when the move moves away */
 a.nav-link:active {
     color: red;
     font-weight: bold;
 }
+
+/*this works but only when the link has focus. Click anywhere else on the page and the focus is lost,so is the style
+a.nav-link:focus {
+    color: white;
+    font-weight: bold;
+}
+*/
