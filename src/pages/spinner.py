@@ -17,7 +17,7 @@ def layout():
                    id="spinner-start-button", n_clicks=0),
         dcc.Loading(
             id="spinner-loading",
-            type="default",
+            type="circle",
             show_initially=False,
             children=html.Div(id="spinner-loading-output")
         )
