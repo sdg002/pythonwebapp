@@ -13,6 +13,7 @@ dash.register_page(
 
 def layout():
     html_layout = html.Div([
+        html.P("Click on the button to start a long operation"),
         dbc.Button(f"Start Long Operation {LONG_OPERATION_TIME} seconds",
                    id="spinner-start-button", n_clicks=0),
         dcc.Loading(
