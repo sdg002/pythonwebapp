@@ -15,18 +15,25 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  - name: MajorVersion
+  - name: VersionMajor
     value: 1
-  - name: MinorVersion
-    value: 0
-  - name: PatchNumber
-    value: 0
+  - name: VersionMinorRelease
+    value: $[counter(variables['VersionMajor'], 1)]
+  - name: ReleaseVersionNumber
+    value: $(VersionMajor).$(VersionMinorRelease)
+  - name: PreReleaseVersionNumber
+    value: $(VersionMajor).$(VersionMinorRelease)b$(Build.BuildId)
+  - name: BuildName
+    ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+      value: "${{ variables.ReleaseVersionNumber }}"
+    ${{else}}:
+      value: "${{ variables.PreReleaseVersionNumber }}"
   - name: PythonVersion
     value: 3.9
   - name: AzureServiceAccount
     value: "azure pay as you go demo (sep 21)"
 
-name: $(MajorVersion).$(MinorVersion).$(PatchNumber).$(Rev:r)
+name: $(BuildName)
 
 stages:
   - stage: BUILD
