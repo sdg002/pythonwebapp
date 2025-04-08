@@ -33,7 +33,7 @@ variables:
   - name: AzureServiceAccount
     value: "azure pay as you go demo (sep 21)"
 
-name: $(BuildName)
+name: "${{ variables.BuildName }}"
 
 stages:
   - stage: BUILD
