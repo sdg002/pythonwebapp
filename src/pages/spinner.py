@@ -1,9 +1,9 @@
+import time
 import logging
 import os
 import dash
 from dash import html, dcc, Input, Output
 import dash_bootstrap_components as dbc
-import time
 
 LONG_OPERATION_TIME = 5  # seconds
 
