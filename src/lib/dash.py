@@ -13,6 +13,7 @@ class DashHelper:
     def register_dash_using_nav_bar(cls, flask_app: Flask):
         logging.info("Inside register_dash_using_nav")
         dash_app = Dash(use_pages=True, server=flask_app,
+                        prevent_initial_callbacks=True,
                         url_base_pathname="/dash/", external_stylesheets=[dbc.themes.BOOTSTRAP])
         nav_bar_links = []
         for page in dash.page_registry.values():
