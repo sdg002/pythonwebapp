@@ -1,10 +1,16 @@
+import os
+import logging
 import dash
 from dash import html
-import os
 
-dash.register_page(__name__, path='/',title=f'Home ({os.environ.get("ENVIRONMENT")})')
+dash.register_page(__name__, path='/',
+                   title=f'Home ({os.environ.get("ENVIRONMENT")})')
 
-layout = html.Div([
-    html.H1('This is our Home page'),
-    html.Div('This is our Home page content.'),
-])
+
+def layout():
+    logging.info('Page handler:{__name__}')
+    html_elements = html.Div([
+        html.H1('This is our Home page'),
+        html.Div('This is our Home page content.'),
+    ])
+    return html_elements
