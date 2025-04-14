@@ -1,10 +1,16 @@
+import os
+import logging
 import dash
 from dash import html
-import os
 
-dash.register_page(__name__,title=f'Archive ({os.environ.get("ENVIRONMENT")})')
+dash.register_page(
+    __name__, title=f'Archive ({os.environ.get("ENVIRONMENT")})')
 
-layout = html.Div([
-    html.H1('This is our Archive page'),
-    html.Div('This is our Archive page content.'),
-])
+
+def layout():
+    logging.info(f"Inside handler:{__name__}")
+    elements = html.Div([
+        html.H1('This is our Archive page'),
+        html.Div('This is our Archive page content.'),
+    ])
+    return elements

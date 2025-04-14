@@ -136,5 +136,5 @@ class DashHelper:
           Input('tabs', 'value'),
           prevent_initial_call=True)
 def route(tab_value):
-    logging.info("Inside route with tab_value={tab_value}")
+    logging.info(f"Inside route handler with tab_value={tab_value}")
     return tab_value
