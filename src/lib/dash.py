@@ -2,7 +2,7 @@ import logging
 from flask import Flask
 import dash_bootstrap_components as dbc
 import dash
-from dash import Dash, html, dcc
+from dash import Dash, Input, Output, callback, html, dcc
 # from dash.dependencies import Input, Output
 
 
@@ -30,7 +30,7 @@ class DashHelper:
 
         dash_app.layout = html.Div([
             tabs,
-            dcc.Location(id='url', refresh=False),
+            dcc.Location(id='url'),
             dash.page_container
         ])
         logging.info("Register dash complete")
@@ -113,7 +113,7 @@ class DashHelper:
 
         # banner=f'Multi-page app with Dash Pages ({os.environ.get("ENVIRONMENT")})'
         dash_app.layout = html.Div([
-            dcc.Location(id='url', refresh=False),
+            dcc.Location(id='url'),
             bootstrap_navbar,
             dash.page_container
         ])
@@ -130,3 +130,11 @@ class DashHelper:
     #     for page in dash.page_registry.values():
     #         if pathname == page["relative_path"]:
     #             return page["name"]
+
+
+@callback(Output('url', 'pathname'),
+          Input('tabs', 'value'),
+          prevent_initial_call=True)
+def route(tab_value):
+    logging.info("Inside route with tab_value={tab_value}")
+    return tab_value
