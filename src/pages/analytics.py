@@ -1,22 +1,29 @@
 import os
+import logging
 import dash
 from dash import html, dcc, callback, Input, Output
 
-dash.register_page(__name__, title=f'Analytics ({os.environ.get("ENVIRONMENT")})')
+dash.register_page(
+    __name__, title=f'Analytics ({os.environ.get("ENVIRONMENT")})')
 
-layout = html.Div([
-    html.H1('This is our Analytics page'),
-    html.Div([
-        "Select a city: ",
-        dcc.RadioItems(
-            options=['New York City', 'Montreal', 'San Francisco'],
-            value='Montreal',
-            id='analytics-input'
-        )
-    ]),
-    html.Br(),
-    html.Div(id='analytics-output'),
-])
+
+def layout():
+    logging.info(f'Page handler:{__name__}')
+    html_elements = html.Div([
+        html.H1('This is our Analytics page'),
+        html.Div([
+            "Select a city: ",
+            dcc.RadioItems(
+                options=['New York City', 'Montreal', 'San Francisco'],
+                value='Montreal',
+                id='analytics-input'
+            )
+        ]),
+        html.Br(),
+        html.Div(id='analytics-output'),
+    ])
+    return html_elements
+
 
 @callback(
     Output('analytics-output', 'children'),
