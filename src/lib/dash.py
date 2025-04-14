@@ -25,7 +25,14 @@ class DashHelper:
             id="tabs",
             value="tab-1",
             children=tab_children,
-            persistence_type="session", persistence=True)
+            persistence_type="local", persistence=True)
+        # persistence=True
+        # Changed persistence_type from session to memory
+        # sesssion - appears to work fine, but slow tab change
+        # memory - does not work well, the the active tab does not render
+        # local - works well, same as session
+        # persistence=False
+        # Does not render the active Tab
 
         dash_app.layout = html.Div([
             tabs,
