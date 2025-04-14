@@ -1,10 +1,10 @@
-from flask import Flask
-import dash_bootstrap_components as dbc
 import logging
+from flask import Flask
+from flask import g
+import dash_bootstrap_components as dbc
 import dash
 from dash import Dash, html, dcc
-from flask import g
-from dash.dependencies import Input, Output
+# from dash.dependencies import Input, Output
 
 
 class DashHelper:
