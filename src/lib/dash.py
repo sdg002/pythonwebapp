@@ -1,6 +1,5 @@
 import logging
 from flask import Flask
-from flask import g
 import dash_bootstrap_components as dbc
 import dash
 from dash import Dash, html, dcc
@@ -17,10 +16,11 @@ class DashHelper:
                         url_base_pathname="/dash/")
         tab_children = []
         for page in dash.page_registry.values():
-            page_path = page['path']
+            page_name = page["name"]
+            # page_path = page['path']
             relative_path = page["relative_path"]
             tab_children.append(
-                dcc.Tab(page_path, relative_path))
+                dcc.Tab(label=page_name, value=relative_path))
 
         tabs = dcc.Tabs(
             id="tabs",
