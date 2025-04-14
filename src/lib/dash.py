@@ -3,7 +3,6 @@ from flask import Flask
 import dash_bootstrap_components as dbc
 import dash
 from dash import Dash, Input, Output, callback, html, dcc
-# from dash.dependencies import Input, Output
 
 
 class DashHelper:
