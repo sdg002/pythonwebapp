@@ -10,6 +10,33 @@ from dash import Dash, html, dcc
 class DashHelper:
 
     @classmethod
+    def register_dash_using_tabs(cls, flask_app: Flask):
+        logging.info("Inside register_dash_using_tabs")
+        dash_app = Dash(use_pages=True, server=flask_app,
+                        prevent_initial_callbacks=True,
+                        url_base_pathname="/dash/")
+        tab_children = []
+        for page in dash.page_registry.values():
+            page_path = page['path']
+            relative_path = page["relative_path"]
+            tab_children.append(
+                dcc.Tab(page_path, relative_path))
+
+        tabs = dcc.Tabs(
+            id="tabs",
+            value="tab-1",
+            children=tab_children,
+            persistence_type="session", persistence=True)
+
+        dash_app.layout = html.Div([
+            tabs,
+            dcc.Location(id='url', refresh=False),
+            dash.page_container
+        ])
+        logging.info("Register dash complete")
+        return dash_app
+
+    @classmethod
     def register_dash_using_nav_bar(cls, flask_app: Flask):
         logging.info("Inside register_dash_using_nav")
         dash_app = Dash(use_pages=True, server=flask_app,
