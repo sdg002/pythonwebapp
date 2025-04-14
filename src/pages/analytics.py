@@ -8,8 +8,8 @@ dash.register_page(
 
 
 def layout():
-    logging.info(f"Inside handler:{__name__}")
-    html_element = html.Div([
+    logging.info(f'Page handler:{__name__}')
+    html_elements = html.Div([
         html.H1('This is our Analytics page'),
         html.Div([
             "Select a city: ",
@@ -22,7 +22,7 @@ def layout():
         html.Br(),
         html.Div(id='analytics-output'),
     ])
-    return html_element
+    return html_elements
 
 
 @callback(
