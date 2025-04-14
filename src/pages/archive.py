@@ -8,7 +8,11 @@ dash.register_page(
 
 
 def layout():
+<<<<<<< HEAD
     logging.info(f"Inside handler:{__name__}")
+=======
+    logging.info(f'Page handler:{__name__}')
+>>>>>>> Changed archive/analytics to function (#51)
     elements = html.Div([
         html.H1('This is our Archive page'),
         html.Div('This is our Archive page content.'),
