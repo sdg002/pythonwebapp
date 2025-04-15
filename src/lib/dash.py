@@ -20,6 +20,8 @@ class DashHelper:
             relative_path = page["relative_path"]
             tab_children.append(
                 dcc.Tab(label=page_name, value=relative_path))
+        tab_children.append(
+            dcc.Tab(label="Back to root", value="/"))
 
         tabs = dcc.Tabs(
             id="tabs",
