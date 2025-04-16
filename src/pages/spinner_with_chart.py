@@ -14,7 +14,8 @@ SLEEP_TIME_SECONDS = 5
 
 def layout() -> object:
     elements = html.Div(children=[
-        html.H1(children=f'Loading Example {SLEEP_TIME_SECONDS} seconds'),
+        html.H1(
+            children=f'Loading Example {SLEEP_TIME_SECONDS} seconds. Please wait...'),
 
         dcc.Loading(
             id="loading-1",
@@ -26,7 +27,7 @@ def layout() -> object:
             id='interval-component',
             interval=1*100,  # in milliseconds
             n_intervals=0,
-            max_intervals=1
+            max_intervals=0
         )
     ])
     return elements
