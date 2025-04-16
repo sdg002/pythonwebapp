@@ -24,7 +24,7 @@ def layout() -> object:
 
         dcc.Interval(
             id='interval-component',
-            interval=1*1000,  # in milliseconds
+            interval=1*100,  # in milliseconds
             n_intervals=0,
             max_intervals=1
         )
