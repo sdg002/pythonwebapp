@@ -15,7 +15,7 @@ SLEEP_TIME_SECONDS = 5
 def layout() -> object:
     elements = html.Div(children=[
         html.H1(
-            children=f'Loading Example {SLEEP_TIME_SECONDS} seconds. Please wait...'),
+            id="banner", children=f'Loading Example {SLEEP_TIME_SECONDS} seconds. Please wait...'),
 
         dcc.Loading(
             id="loading-1",
@@ -37,7 +37,7 @@ def layout() -> object:
 
 # Define the callback to update the chart
 @dash.callback(
-    Output('loading-output-1', 'children'),
+    [Output('loading-output-1', 'children'), Output('banner', 'children')],
     [Input('interval-component', 'n_intervals')]
 )
 def update_graph(n):
@@ -60,7 +60,7 @@ def update_graph(n):
         }
     }
 
+    updated_banner = f'Loading complete after {SLEEP_TIME_SECONDS} seconds. '
     return dcc.Graph(
         id='example-graph',
-        figure=figure
-    )
+        figure=figure), updated_banner
