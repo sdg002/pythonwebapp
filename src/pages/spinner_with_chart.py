@@ -1,10 +1,11 @@
 import logging
 import time
 import os
+import plotly.graph_objs as go
 import dash
 from dash import dcc, html
-import plotly.graph_objs as go
 from dash.dependencies import Input, Output
+import random
 
 dash.register_page(
     __name__, title=f'Spinner ({os.environ.get("ENVIRONMENT")})')
@@ -32,10 +33,21 @@ def layout() -> object:
     ])
     return elements
 
+
+def generate_numbers_with_variation(n, m, variation=2):
+    """
+    Generate a list of numbers from n to m with random variation added to each number.
+
+    :param n: Starting number (inclusive)
+    :param m: Ending number (inclusive)
+    :param variation: Maximum random variation to add/subtract
+    :return: List of numbers with random variation
+    """
+    return [x + random.uniform(-variation, variation) for x in range(n, m + 1)]
+
 # Define the callback to update the chart
 
 
-# Define the callback to update the chart
 @dash.callback(
     [Output('loading-output-1', 'children'), Output('banner', 'children')],
     [Input('interval-component', 'n_intervals')]
@@ -46,11 +58,15 @@ def update_graph(n):
     time.sleep(SLEEP_TIME_SECONDS)
 
     # Create the chart
+    start = 1
+    count = 5
+    x = list(range(start, start+count))
+    y = generate_numbers_with_variation(start, start+count)
     figure = {
         'data': [
             go.Scatter(
-                x=[1, 2, 3, 4, 5],
-                y=[10, 11, 12, 13, 14],
+                x=x,
+                y=y,
                 mode='lines+markers',
                 name='Line 1'
             )
