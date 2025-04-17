@@ -1,10 +1,11 @@
 import logging
 import time
 import os
+import plotly.graph_objs as go
 import dash
 from dash import dcc, html
-import plotly.graph_objs as go
 from dash.dependencies import Input, Output
+import random
 
 dash.register_page(
     __name__, title=f'Spinner ({os.environ.get("ENVIRONMENT")})')
@@ -14,7 +15,8 @@ SLEEP_TIME_SECONDS = 5
 
 def layout() -> object:
     elements = html.Div(children=[
-        html.H1(children=f'Loading Example {SLEEP_TIME_SECONDS} seconds'),
+        html.H1(
+            id="banner", children=f'Loading Example {SLEEP_TIME_SECONDS} seconds. Please wait...'),
 
         dcc.Loading(
             id="loading-1",
@@ -24,19 +26,30 @@ def layout() -> object:
 
         dcc.Interval(
             id='interval-component',
-            interval=1*1000,  # in milliseconds
+            interval=1*100,  # in milliseconds
             n_intervals=0,
-            max_intervals=1
+            max_intervals=0
         )
     ])
     return elements
 
+
+def generate_numbers_with_variation(n, m, variation=2):
+    """
+    Generate a list of numbers from n to m with random variation added to each number.
+
+    :param n: Starting number (inclusive)
+    :param m: Ending number (inclusive)
+    :param variation: Maximum random variation to add/subtract
+    :return: List of numbers with random variation
+    """
+    return [x + random.uniform(-variation, variation) for x in range(n, m + 1)]
+
 # Define the callback to update the chart
 
 
-# Define the callback to update the chart
 @dash.callback(
-    Output('loading-output-1', 'children'),
+    [Output('loading-output-1', 'children'), Output('banner', 'children')],
     [Input('interval-component', 'n_intervals')]
 )
 def update_graph(n):
@@ -45,11 +58,15 @@ def update_graph(n):
     time.sleep(SLEEP_TIME_SECONDS)
 
     # Create the chart
+    start = 1
+    count = 5
+    x = list(range(start, start+count))
+    y = generate_numbers_with_variation(start, start+count)
     figure = {
         'data': [
             go.Scatter(
-                x=[1, 2, 3, 4, 5],
-                y=[10, 11, 12, 13, 14],
+                x=x,
+                y=y,
                 mode='lines+markers',
                 name='Line 1'
             )
@@ -59,7 +76,7 @@ def update_graph(n):
         }
     }
 
+    updated_banner = f'Loading complete after {SLEEP_TIME_SECONDS} seconds. '
     return dcc.Graph(
         id='example-graph',
-        figure=figure
-    )
+        figure=figure), updated_banner
