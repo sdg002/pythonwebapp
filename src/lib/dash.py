@@ -27,7 +27,7 @@ class DashHelper:
             id="tabs",
             value="tab-1",
             children=tab_children,
-            persistence_type="local", persistence=True)
+            persistence_type="session", persistence=True)
         # persistence=True
         # Changed persistence_type from session to memory
         # sesssion - appears to work fine, but slow tab change
@@ -38,7 +38,7 @@ class DashHelper:
 
         dash_app.layout = html.Div([
             tabs,
-            dcc.Location(id='url'),
+            dcc.Location(id='url', refresh='callback-nav'),
             dash.page_container
         ])
         logging.info("Register dash complete")
@@ -66,8 +66,8 @@ class DashHelper:
         # color="light", "default" was not good. The text in the links did not show up at all
 
         dash_app.layout = html.Div([
-            dcc.Location(id='url', refresh=False),
             bootstrap_navbar,
+            dcc.Location(id='url', refresh='callback-nav'),
             dash.page_container
         ])
         logging.info("Register dash complete")
