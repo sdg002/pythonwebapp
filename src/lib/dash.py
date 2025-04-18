@@ -23,6 +23,21 @@ class DashHelper:
         tab_children.append(
             dcc.Tab(label="Back to root", value="/"))
 
+        # did not work
+        # tabBackToHome = dcc.Tab(children=[dbc.NavLink(
+        #     "Back to root landing page", href="/", external_link=True)])
+        # tab_children.append(tabBackToHome)
+
+        # this did not work
+        # tabBackToHome = dcc.Tab(dbc.NavLink(
+        #     "Back to root landing page", href="/", external_link=True), value="/")
+        # tab_children.append(tabBackToHome)
+
+        # this did not work either
+        # tabBackToHome = dcc.Tab(dbc.NavLink(
+        #     "Back to root landing page", href="/", external_link=True))
+        # tab_children.append(tabBackToHome)
+
         tabs = dcc.Tabs(
             id="tabs",
             value="tab-1",
@@ -35,6 +50,9 @@ class DashHelper:
         # local - works well, same as session
         # persistence=False
         # Does not render the active Tab
+
+        # the "back to root" does not navigate
+        #
 
         dash_app.layout = html.Div([
             tabs,
