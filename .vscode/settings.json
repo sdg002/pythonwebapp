@@ -4,6 +4,7 @@
     "pylint.args": [
         "--disable=C0116",
         "--disable=C0114",
+        "--disable=C0115",
         "--disable=W1203"
     ]
 }
