@@ -18,7 +18,8 @@ from blue_print_views.plotlydemosubplots import plotly_subplot_blue_print
 
 
 def create_flask_app() -> Flask:
-    app = Flask(__name__, static_folder='static', static_url_path='/static/')
+    app = Flask(__name__, static_folder='static',
+                static_url_path='/static/', template_folder='blue_print_templates')
     return app
 
 
