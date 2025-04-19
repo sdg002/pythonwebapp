@@ -7,14 +7,14 @@ from flask import Flask
 from flask import g
 from flask_caching import Cache
 from lib import DashHelper
-from views.version import version_blue_print
-from views.environment import environment_blue_print
-from views.home import home_blue_print
-from views.about import about_blue_print
-from views.plotlydemo import plotly_blue_print
-from views.formpostback import form_post_back
-from views.plotlyadvanced import plotly_advanced_blue_print
-from views.plotlydemosubplots import plotly_subplot_blue_print
+from blue_print_views.version import version_blue_print
+from blue_print_views.environment import environment_blue_print
+from blue_print_views.home import home_blue_print
+from blue_print_views.about import about_blue_print
+from blue_print_views.plotlydemo import plotly_blue_print
+from blue_print_views.formpostback import form_post_back
+from blue_print_views.plotlyadvanced import plotly_advanced_blue_print
+from blue_print_views.plotlydemosubplots import plotly_subplot_blue_print
 
 
 def create_flask_app() -> Flask:
@@ -23,7 +23,7 @@ def create_flask_app() -> Flask:
 
 
 def register_blue_prints(flask_app: Flask):
-    from views.cache_test import cache_test_blue_print
+    from blue_print_views.cache_test import cache_test_blue_print
     flask_app.register_blueprint(version_blue_print)
     flask_app.register_blueprint(environment_blue_print)
     flask_app.register_blueprint(home_blue_print)
