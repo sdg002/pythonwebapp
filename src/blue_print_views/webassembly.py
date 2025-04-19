@@ -6,5 +6,5 @@ web_assembly_blue_print = flask.Blueprint(
 
 @web_assembly_blue_print.route("/webassembly1")
 def plotly_demo():
-    # return flask.render_template('plotly.html', graphJSON=graphJSON)
-    return 'Hello world!'
+    return flask.render_template('web_assembly1.html')
+    # return 'Hello world!'
