@@ -11,13 +11,22 @@
 
 {% block content %}
 
-
+<h1>Polyglot 🦜 💬 🇬🇧 ➡️ 🏴‍☠️</h1>
+<hr />
+<h4>Demo with a simple INPUT element</h4>
 <div>
-  <h1>Polyglot 🦜 💬 🇬🇧 ➡️ 🏴‍☠️</h1>
   <p>Translate English into Pirate speak...</p>
   <input type="text" name="english" id="english" placeholder="Type English here..." />
   <button py-click="translate_english">Translate</button>
   <div id="output"></div>
   <script type="py" src="/static/webassembly1/main.py" config="/static/webassembly1/pyscript.json"></script>
 </div>
+<hr />
+<h4>Demo with a FORM element</h4>
+<form py-submit="translate_english_submit">
+  <label for="english">Enter English text:</label>
+  <input type="text" name="english" id="english1" placeholder="Type English here..." required />
+  <button type="submit">Translate</button>
+  <div id="output1"></div>
+</form>
 {% endblock %}
