@@ -1,6 +1,6 @@
+import logging
 import arrr
 from pyscript import document, Event
-import logging
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -12,7 +12,7 @@ def translate_english(event):
     output_div.innerText = arrr.translate(english)
 
 
-def translate_english_submit(event):
+def translate_english_submit(event: Event):
     event.preventDefault()
     logging.debug("Submit button clicked")
     input_text_element = document.querySelector("#english1")

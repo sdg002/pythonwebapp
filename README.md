@@ -296,3 +296,10 @@ https://dash-bootstrap-components.opensource.faculty.ai/docs/components/tabs/
 
 # Inteval
 to be done
+
+---
+
+# Pyscript Challenges
+1. How to debug the Python on the client side ?
+1. How to improve the VS code experience of client side Python ?
+1. How to deterime the pyscript specifc HTML attributes like `py-click` and `py-submit` ?
