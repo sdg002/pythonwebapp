@@ -1,7 +1,28 @@
 pre.snippet {
-    background-color: ghostwhite;border-style: solid;border-width: 1px;border-radius: 5px;margin-top: 1em ;font-family: monospace;
+    background-color: ghostwhite;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    margin-top: 1em;
+    font-family: monospace;
 }
 
-div.notes{
-    border-width: 1px; border-color: lightgray;border-style: solid;
+div.notes {
+    border-width: 1px;
+    border-color: lightgray;
+    border-style: solid;
 }
+
+/*
+this does not work for on Static Flask pages. Works on Dash. The style applies and then disappears when the page is loaded.
+a.nav-link:focus {
+    font-weight: bold;
+}
+*/
+
+/* this works, but only when the link is in a pressed state, disappears when the move moves away 
+a.nav-link:active {
+    color: red;
+    font-weight: bold;
+}
+*/

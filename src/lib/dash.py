@@ -16,10 +16,19 @@ class DashHelper:
                         prevent_initial_callbacks=True,
                         url_base_pathname="/dash/", external_stylesheets=[dbc.themes.BOOTSTRAP])
         nav_bar_links = []
+        # TODO setting active=True works -
+        # Next step - can we have a callback and re-render the Navbar
+        # if it works , then make the navar creation into a reusable function
         for page in dash.page_registry.values():
             logging.info(
                 f"Found dash page path={page['path']} , relative_path={page['relative_path']}")
             nav_item = dbc.NavLink(page["name"], href=page["relative_path"])
+            if page["path"] == "/analytics":
+                nav_item = dbc.NavLink(
+                    page["name"], href=page["relative_path"], active=True)
+            else:
+                nav_item = dbc.NavLink(
+                    page["name"], href=page["relative_path"])
             nav_bar_links.append(nav_item)
 
         nav_bar_links.append(dbc.NavLink(
