@@ -299,7 +299,18 @@ to be done
 
 ---
 
-# Pyscript Challenges
+# Pyscript 
+
+## Pyscript tutorial
+https://docs.pyscript.net/2025.3.1/beginning-pyscript/#indexhtml
+
+## Link to full list of examples
+https://pyscript.com/@examples
+
+
+## Challenges
 1. How to debug the Python on the client side ?
 1. How to improve the VS code experience of client side Python ?
 1. How to deterime the pyscript specifc HTML attributes like `py-click` and `py-submit` ?
+
+---
