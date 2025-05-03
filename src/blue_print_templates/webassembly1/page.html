@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="https://pyscript.net/releases/2025.3.1/core.css">
+<script type="module" src="https://pyscript.net/releases/2025.3.1/core.js"></script>
+{% endblock %}
+
+{% block title %}Webassembly 1{% endblock %}
+
+{% block header %}Webassembly 1{% endblock %}
+
+{% block content %}
+
+<h1>Polyglot 🦜 💬 🇬🇧 ➡️ 🏴‍☠️</h1>
+<hr />
+
+<h2>Demo with a simple INPUT element</h2>
+<div>
+  <p>Translate English into Pirate speak...</p>
+  <input type="text" name="english" id="english" placeholder="Type English here. e.g hello" />
+  <button py-click="translate_english">Translate</button>
+  <div id="output"></div>
+  <script type="py" src="/static/webassembly1/main.py" config="/static/webassembly1/pyscript.json"></script>
+</div>
+<hr />
+<h2>Demo with a FORM element</h2>
+<form py-submit="translate_english_submit">
+  <label for="english">Enter English text:</label>
+  <input type="text" name="english" id="english1" placeholder="Type English here. e.g hello" required />
+  <button type="submit">Translate</button>
+  <div id="output1"></div>
+</form>
+
+<hr />
+<h2>How this works ?</h2>
+<pre>
+  - This page uses PyScript to run Python code in the browser.
+  - This page follows the tutorial from PyScript: https://docs.pyscript.net/2025.3.1/beginning-pyscript/#indexhtml
+  - The Python packages are loaded from a JSON file (pyscript.json).
+  - The page loads the files core.js and core.css from the PyScript CDN (pyscript.net).
+  - The Python code is in the main.py file which is loaded by the script tag 
+  &lt;script type=&quot;py&quot; src=&quot;/static/webassembly1/main.py&quot; config=&quot;/static/webassembly1/pyscript.json&quot;&gt;&lt;/script&gt;
+<hr/>
+</pre>
+
+{% endblock %}
