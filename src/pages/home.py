@@ -4,7 +4,7 @@ import dash
 from dash import html
 
 dash.register_page(__name__, path='/',
-                   title=f'Home ({os.environ.get("ENVIRONMENT")})')
+                   title=f'Home ({os.environ.get("ENVIRONMENT")})', order=0)
 
 
 def layout():
