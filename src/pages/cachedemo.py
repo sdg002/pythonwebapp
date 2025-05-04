@@ -23,7 +23,7 @@ def some_long_running_function_to_generate_data() -> list[str]:
     logging.info("Begin-generate_data")
     items = []
     count = 3
-    for idx in range(count):
+    for _ in range(count):
         items.append(dt.datetime.now())
         time.sleep(1.5)
     logging.info("End-generate_data")
@@ -40,8 +40,9 @@ def layout():
         html.Li("Take note of the first item. This has the time stamp"),
         html.Li("Keep refreshing every few seconds for "),
         html.Li("On subsequent page loads, the drop down items will remain unchanged"),
-        html.Li("After about 30 seconds the cache will expire and you will see fresh items in the drop down")]
-    layout = html.Div([
+        html.Li("After about 30 seconds the cache will expire and "
+                "you will see fresh items in the drop down")]
+    html_elements = html.Div([
         html.H1('This is a page with Drop down whose items are retrieved from cache'),
         html.Div('Select an item.'),
         dcc.Dropdown(items, 'Canada', id='id-items'),
@@ -49,4 +50,4 @@ def layout():
         html.H1("How to test this page"),
         html.Ol(children=how_to_use_this_page)
     ])
-    return layout
+    return html_elements

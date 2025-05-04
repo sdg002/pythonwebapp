@@ -1,7 +1,7 @@
-import dash
-from dash import html, dcc
 import logging
 import os
+import dash
+from dash import html, dcc
 
 dash.register_page(
     __name__, title=f'Dropdown demo ({os.environ.get("ENVIRONMENT")})', order=4)
@@ -25,10 +25,10 @@ def layout():
     countres = ["USA", "UK", "Canada", "France"]
     output_layout = [html.Span("Selected country:"),
                      html.Span(id='country-output'),]
-    layout = html.Div([
+    html_elements = html.Div([
         html.H1('This is a page with Drop down'),
         html.Div('Select a country.'),
         dcc.Dropdown(countres, 'Canada', id='id-dropdown-country'),
         html.Div(children=output_layout),
     ])
-    return layout
+    return html_elements
