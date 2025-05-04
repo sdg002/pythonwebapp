@@ -1,14 +1,14 @@
 import logging
 import time
 import os
+import random
 import plotly.graph_objs as go
 import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
-import random
 
 dash.register_page(
-    __name__, title=f'Spinner ({os.environ.get("ENVIRONMENT")})')
+    __name__, title=f'Spinner ({os.environ.get("ENVIRONMENT")})', order=6)
 
 SLEEP_TIME_SECONDS = 5
 
