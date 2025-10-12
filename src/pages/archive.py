@@ -4,7 +4,7 @@ import dash
 from dash import html
 
 dash.register_page(
-    __name__, title=f'Archive ({os.environ.get("ENVIRONMENT")})', order=3)
+    __name__, name='Another empty page', title=f'Archive ({os.environ.get("ENVIRONMENT")})', order=3)
 
 
 def layout():

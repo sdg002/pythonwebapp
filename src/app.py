@@ -75,4 +75,4 @@ with app.app_context():
     g.cache = cache
     logging.info("Inside app_context")
     register_blue_prints(flask_app=app)
-    DashHelper.register_dash_using_nav_bar(flask_app=app)
+    DashHelper.register_dash_using_tabs(flask_app=app)
