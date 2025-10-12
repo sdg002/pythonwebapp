@@ -20,8 +20,10 @@ class DashHelper:
             relative_path = page["relative_path"]
             tab_children.append(
                 dcc.Tab(label=page_name, value=relative_path))
-        tab_children.append(
-            dcc.Tab(label="Back to root", value="/"))
+            
+        # this did not work - the tab is rendered, but does not navigate and displays content from previous tab
+        # tab_children.append(
+        #     dcc.Tab(label="Back to root", value="/"))
 
         # did not work
         # tabBackToHome = dcc.Tab(children=[dbc.NavLink(
