@@ -294,8 +294,11 @@ https://dashcheatsheet.pythonanywhere.com/
 ## Tabs
 https://dash-bootstrap-components.opensource.faculty.ai/docs/components/tabs/
 
-# Inteval
-to be done
+# Intreval
+https://community.plotly.com/t/multipage-dash-app-using-tabs-instead-of-navbar/83452/4
+
+# Community reference on multi-page Dash App using navbar
+https://community.plotly.com/t/multipage-dash-app-using-tabs-instead-of-navbar/83452/4
 
 ---
 

@@ -12,5 +12,6 @@ def layout():
     html_elements = html.Div([
         html.H1('This is our Home page'),
         html.Div('This is our Home page content.'),
+        html.A('Go back to the landing page', href='/'),
     ])
     return html_elements
