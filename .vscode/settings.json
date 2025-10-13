@@ -1,10 +1,15 @@
 {
     "python.formatting.provider": "autopep8",
     "python.linting.pylintArgs": [],
+    "editor.formatOnSave": true,
     "pylint.args": [
         "--disable=C0116",
         "--disable=C0114",
         "--disable=W1203",
         "--disable=C0415"
-    ]
+    ],
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "ms-python.autopep8"
+    }
 }
