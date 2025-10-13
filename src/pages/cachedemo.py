@@ -7,7 +7,7 @@ from dash import html, dcc
 from flask import g
 
 dash.register_page(
-    __name__, title=f'Cache demo ({os.environ.get("ENVIRONMENT")})', order=7)
+    __name__, name="Memoize dropdowns options", title=f'Cache demo ({os.environ.get("ENVIRONMENT")})', order=7)
 
 
 @dash.callback(
