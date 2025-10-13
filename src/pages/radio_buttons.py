@@ -16,7 +16,9 @@ def layout():
             dcc.RadioItems(
                 options=['New York City', 'Montreal', 'San Francisco'],
                 value='Montreal',
-                id='analytics-input'
+                id='analytics-input',
+                persistence=True,
+                persistence_type='local'
             )
         ]),
         html.Br(),
@@ -30,4 +32,5 @@ def layout():
     Input('analytics-input', 'value')
 )
 def update_city_selected(input_value):
+    logging.info(f'radio button-Input value:{input_value}')
     return f'You selected: {input_value}'
