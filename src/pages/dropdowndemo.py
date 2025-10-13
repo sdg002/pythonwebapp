@@ -25,7 +25,7 @@ def layout():
         html.Div('Select a country.'),
         dcc.Dropdown(
             countres,
-            'Canada', 
+            'Canada',
             id='id-dropdown-country',
             persistence=True,
             persistence_type='local'),

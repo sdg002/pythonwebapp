@@ -8,7 +8,7 @@ import dash_bootstrap_components as dbc
 LONG_OPERATION_TIME = 5  # seconds
 
 dash.register_page(
-    __name__, title=f'Spinner ({os.environ.get("ENVIRONMENT")})', order=5)
+    __name__, name="Start long operation", title=f'Spinner ({os.environ.get("ENVIRONMENT")})', order=5)
 
 
 def layout():
