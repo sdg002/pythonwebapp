@@ -4,7 +4,7 @@ import dash
 from dash import html, dcc, callback, Input, Output
 
 dash.register_page(
-    __name__, title=f'Radio buttons ({os.environ.get("ENVIRONMENT")})', order=2)
+    __name__, name="Radio buttons",  title=f'Radio buttons ({os.environ.get("ENVIRONMENT")})', order=2)
 
 
 def layout():
