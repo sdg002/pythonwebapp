@@ -8,7 +8,7 @@ from dash import dcc, html
 from dash.dependencies import Input, Output
 
 dash.register_page(
-    __name__, title=f'Spinner ({os.environ.get("ENVIRONMENT")})', order=6)
+    __name__, name="Load chart after delay", title=f'Spinner ({os.environ.get("ENVIRONMENT")})', order=6)
 
 SLEEP_TIME_SECONDS = 5
 
