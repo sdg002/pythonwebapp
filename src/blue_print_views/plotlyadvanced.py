@@ -72,6 +72,14 @@ def render_plotly_graph(df: pd.DataFrame,country: str)->str:
     fig=px.line(dff, x='year', y='pop', title=title)
     graphJSON = json.dumps(fig, cls=  plotly.utils.PlotlyJSONEncoder)
     
+    # experimenting
+    x_values = [1, 2, 3, 4, 5]
+    y_values = [10, 15, 13, 17, 14]
+
+    fig = go.Figure(go.Scatter(x=x_values, y=y_values, mode='lines', name='Line Chart'))
+    graphJSON = json.dumps(fig, cls=  plotly.utils.PlotlyJSONEncoder)
+
+    #experimenting - the above works
     countries = list(df_countries)
     # extend HtmlHelper to render the selected item
     html_helper = lib.SelectElementHelper(values=countries, labels=countries, selected_value=country)
