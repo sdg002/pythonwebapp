@@ -126,20 +126,49 @@ def plotlyadvancedhoverbothaxis():
 @plotly_advanced_blue_print.route("/plotlyadvancedxaxis")
 def plotlyadvancedhover_on_x_axis():
     #
-    #https://plotly.com/python/hover-text-and-formatting/
+    # https://plotly.com/python/hover-text-and-formatting/
     # Search for 'Selecting a hovermode in a figure created with plotly.graph_objects'
     #
     try:
         t = np.linspace(0, 2 * np.pi, 100)
+        x_values = t.astype(float).tolist()
+        y_sin = np.sin(t).astype(float).tolist()
+        y_cos = np.cos(t).astype(float).tolist()
         fig = go.Figure()
-        fig.add_trace(go.Scatter(x=t, y=np.sin(t), name='sin(t)'))
-        fig.add_trace(go.Scatter(x=t, y=np.cos(t), name='cost(t)'))
-        fig.update_layout(hovermode='x unified')
-        graphJSON = json.dumps(fig, cls=  plotly.utils.PlotlyJSONEncoder)
-        return flask.render_template('plotly_generic.html', graphJSON=graphJSON, title="Hover lines along X axes only") 
+        fig.add_trace(go.Scatter(
+            x=x_values,
+            y=y_sin,
+            name='sin(t)',
+            mode='lines+markers',
+            marker=dict(size=6, color='royalblue'),
+            line=dict(color='royalblue')
+        ))
+        fig.add_trace(go.Scatter(
+            x=x_values,
+            y=y_cos,
+            name='cos(t)',
+            mode='lines+markers',
+            marker=dict(size=6, color='firebrick'),
+            line=dict(color='firebrick')
+        ))
+        fig.update_layout(
+            title="Sine and Cosine Functions with X-Axis Hover",
+            xaxis_title="t (radians)",
+            yaxis_title="Function value",
+            hovermode='x unified',
+            legend_title="Function",
+            xaxis=dict(showgrid=True),
+            yaxis=dict(showgrid=True)
+        )
+        graph_json = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+        return flask.render_template(
+            'plotly_generic.html',
+            graphJSON=graph_json,
+            title="Hover lines along X axis only"
+        )
     except Exception as err:
         logging.error(str(err))
-        return str(err)
+        return "Error rendering scatter plot: " + str(err)
 
 @plotly_advanced_blue_print.route("/plotlyadvancedhovertemplate")
 def plotlyadvanced_hover_template():
