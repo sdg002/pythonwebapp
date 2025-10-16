@@ -100,14 +100,22 @@ def plotlyadvancedhoverbothaxis():
     #
     try:
         df = px.data.gapminder().query("continent=='Oceania'")
-
-        fig = px.line(df, x="year", y="lifeExp", color="country", title="Spike lines")
-        fig.update_traces(mode="markers+lines")
-
+        fig = go.Figure()
+        unique_countries=df["country"].unique()
+        for country in unique_countries:
+            dff = df[df["country"] == country]
+            fig.add_trace(go.Scatter(
+                x=dff["year"].tolist(),
+                y=dff["lifeExp"].tolist(),
+                mode="lines",
+                name=country
+            ))
+        fig.update_layout(title="Population over Years for All Countries")
         fig.update_xaxes(showspikes=True)
-        fig.update_yaxes(showspikes=True)        
-        graphJSON = json.dumps(fig, cls=  plotly.utils.PlotlyJSONEncoder)
-        return flask.render_template('plotly_generic.html', graphJSON=graphJSON, title="Hover lines along X and Y axes") 
+        fig.update_yaxes(showspikes=True)
+        fig.update_traces(mode="markers+lines")
+        graph_json = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+        return flask.render_template('plotly_generic.html', graphJSON=graph_json, title="Population over Years for All Countries")
     except Exception as err:
         logging.error(str(err))
         return str(err)
