@@ -36,7 +36,7 @@ def plotly_demo_temp():
 def plotly_demo_outer():
     try:
         df_gapminder = get_data()
-        return render_plotly_graph(df=df_gapminder, country=None)
+        return render_country_population(df=df_gapminder, country=None)
     except Exception as err:
         logging.info(str(err))
         logging.error(str(err))
@@ -58,7 +58,7 @@ def get_data()->pd.DataFrame:
     logging.info(f"Found {len(df_gapminder)} records in the dataframe ")
     return df_gapminder
 
-def render_plotly_graph(df: pd.DataFrame,country: str)->str:
+def render_country_population(df: pd.DataFrame,country: str)->str:
     logging.info(f"Inside function render_plotly_graph, selected country={country}, df={df}")
 
     df_countries = df["country"].unique()
@@ -69,30 +69,25 @@ def render_plotly_graph(df: pd.DataFrame,country: str)->str:
 
     dff = df[df['country']==country]
     title = f"Selected country is <b>{country}</b>"
-    fig=px.line(dff, x='year', y='pop', title=title)
-    graphJSON = json.dumps(fig, cls=  plotly.utils.PlotlyJSONEncoder)
-    
-    # experimenting
-    x_values = [1, 2, 3, 4, 5]
-    y_values = [10, 15, 13, 17, 14]
+    x_values = dff['year'].tolist()
+    y_values = dff['pop'].tolist()
 
-    fig = go.Figure(go.Scatter(x=x_values, y=y_values, mode='lines', name='Line Chart'))
+    fig = go.Figure(go.Scatter(x=x_values, y=y_values, mode='lines', name='Line Chart' ))
+    fig.update_layout(title=title)
     graphJSON = json.dumps(fig, cls=  plotly.utils.PlotlyJSONEncoder)
 
-    #experimenting - the above works
     countries = list(df_countries)
-    # extend HtmlHelper to render the selected item
     html_helper = lib.SelectElementHelper(values=countries, labels=countries, selected_value=country)
     return flask.render_template('plotlyadvanced.html', graphJSON=graphJSON, helper=html_helper)
 
 
 @plotly_advanced_blue_print.route("/plotlyadvanced", methods=["POST"])
-def plotly_demo_submit():
+def plotly_demo_submit_country():
     try:
         logging.info(f"Post back")
         selected_country=flask.request.form["countrydropdown"]
         df_gapminder = get_data()
-        return render_plotly_graph(df=df_gapminder, country=selected_country)
+        return render_country_population(df=df_gapminder, country=selected_country)
     except Exception as err:
         logging.error(str(err))
         return str(err)
