@@ -115,7 +115,8 @@ def plotlyadvancedhoverbothaxis():
         fig.update_yaxes(showspikes=True)
         fig.update_traces(mode="markers+lines")
         graph_json = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-        return flask.render_template('plotly_generic.html', graphJSON=graph_json, title="Population over Years for All Countries")
+        title="Hover lines along both X and Y axis"
+        return flask.render_template('plotly_generic.html', graphJSON=graph_json, title=title)
     except Exception as err:
         logging.error(str(err))
         return str(err)
@@ -207,10 +208,11 @@ def plotlyadvanced_hover_template():
 
         fig.update_layout(
             hoverlabel_align = 'right',
-            title = "Set hover text with hovertemplate")
+            title = "Demonstration of setting the hover text using a custom hovertemplate")
 
-        graphJSON = json.dumps(fig, cls=  plotly.utils.PlotlyJSONEncoder)
-        return flask.render_template('plotly_generic.html', graphJSON=graphJSON, title="Hover lines along X axes only") 
+        graph_json = json.dumps(fig, cls=  plotly.utils.PlotlyJSONEncoder)
+        title="Hover over the data points to see a custom tooltip"
+        return flask.render_template('plotly_generic.html', graphJSON=graph_json, title=title)
     except Exception as err:
         logging.error(str(err))
         return str(err)
