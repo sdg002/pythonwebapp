@@ -50,7 +50,7 @@ def init_cache(flask_app: Flask) -> Cache:
 
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s | %(levelname)s | %(message)s',
+    format='%(asctime)s | %(levelname)s | %(filename)s | %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S')
 
 app = create_flask_app()

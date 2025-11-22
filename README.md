@@ -324,5 +324,14 @@ https://pyscript.com/@examples
 https://github.com/AnnMarieW/dash-multi-page-app-demos?tab=readme-ov-file#9-multi_page_nested_folder
 
 
+## Link to the Ann Marie's source code
+https://github.com/AnnMarieW/dash-multi-page-app-demos/blob/main/multi_page_nested_folders/app.py
+
 ## Nest pages documentation
 https://dash.plotly.com/urls#nested-pages
+
+---
+
+# What next ?
+Do a simple Dash which implements AnnMaris 2 layer multi-page app
+
