@@ -317,3 +317,12 @@ https://pyscript.com/@examples
 1. How to deterime the pyscript specifc HTML attributes like `py-click` and `py-submit` ?
 
 ---
+
+# Multi-page with 2 levels
+
+## Ann Mari's Github site
+https://github.com/AnnMarieW/dash-multi-page-app-demos?tab=readme-ov-file#9-multi_page_nested_folder
+
+
+## Nest pages documentation
+https://dash.plotly.com/urls#nested-pages
