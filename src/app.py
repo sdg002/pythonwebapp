@@ -7,6 +7,7 @@ from flask import Flask
 from flask import g
 from flask_caching import Cache
 from lib import DashHelper
+from lib import ExampleDashHelper
 from blue_print_views.version import version_blue_print
 from blue_print_views.environment import environment_blue_print
 from blue_print_views.home import home_blue_print
@@ -75,4 +76,5 @@ with app.app_context():
     g.cache = cache
     logging.info("Inside app_context")
     register_blue_prints(flask_app=app)
-    DashHelper.register_dash_using_tabs(flask_app=app)
+    # DashHelper.register_dash_using_tabs(flask_app=app)
+    ExampleDashHelper.register_dash_using_tabs(flask_app=app)
