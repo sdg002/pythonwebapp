@@ -6,7 +6,9 @@ from dash import Dash, Input, Output, callback, html, dcc
 
 
 class DashHelper:
-
+    """
+    Helper class to register the Dash apps and set up navigation
+    """
     @classmethod
     def register_dash_using_tabs(cls, flask_app: Flask):
         logging.info("Inside register_dash_using_tabs")
@@ -20,7 +22,7 @@ class DashHelper:
             relative_path = page["relative_path"]
             tab_children.append(
                 dcc.Tab(label=page_name, value=relative_path))
-            
+
         # this did not work - the tab is rendered, but does not navigate and displays content from previous tab
         # tab_children.append(
         #     dcc.Tab(label="Back to root", value="/"))

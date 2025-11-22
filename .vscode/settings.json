@@ -1,9 +1,11 @@
 {
-    "python.formatting.provider": "autopep8",
-    "python.linting.pylintArgs": [],
+    "autopep8.interpreter": [],
+    "autopep8.path": [],
+    "autopep8.args": [],
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
     "editor.formatOnPaste": true,
+    "pylint.cwd": "${fileDirname}",
     "pylint.args": [
         "--disable=C0116",
         "--disable=C0114",
