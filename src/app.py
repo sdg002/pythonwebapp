@@ -77,4 +77,7 @@ with app.app_context():
     logging.info("Inside app_context")
     register_blue_prints(flask_app=app)
     # DashHelper.register_dash_using_tabs(flask_app=app)
-    ExampleDashHelper.register_dash_using_tabs(flask_app=app)
+    # ExampleDashHelper.register_dash_using_tabs(flask_app=app)
+    from lib import ExampleNavBarTab002
+    ExampleNavBarTab002.register_dash_using_simple_navigation(flask_app=app)
+    logging.info("Dash registration complete")
