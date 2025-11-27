@@ -30,7 +30,7 @@ class ExampleNavBarTab002:
         bootstrap_navbar = dbc.NavbarSimple(
             children=nav_bar_links,
             brand="My App",
-            color="primary",
+            color="light",
             dark=False,
             sticky="top",
             links_left=True,
