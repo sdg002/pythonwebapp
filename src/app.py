@@ -7,6 +7,7 @@ from flask import Flask
 from flask import g
 from flask_caching import Cache
 from lib import DashHelper
+from lib import ExampleDashHelper
 from blue_print_views.version import version_blue_print
 from blue_print_views.environment import environment_blue_print
 from blue_print_views.home import home_blue_print
@@ -50,7 +51,7 @@ def init_cache(flask_app: Flask) -> Cache:
 
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s | %(levelname)s | %(message)s',
+    format='%(asctime)s | %(levelname)s | %(filename)s | %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S')
 
 app = create_flask_app()
@@ -75,4 +76,8 @@ with app.app_context():
     g.cache = cache
     logging.info("Inside app_context")
     register_blue_prints(flask_app=app)
-    DashHelper.register_dash_using_tabs(flask_app=app)
+    # DashHelper.register_dash_using_tabs(flask_app=app)
+    # ExampleDashHelper.register_dash_using_tabs(flask_app=app)
+    from lib import ExampleNavBarTab002
+    ExampleNavBarTab002.register_dash_using_simple_navigation(flask_app=app)
+    logging.info("Dash registration complete")

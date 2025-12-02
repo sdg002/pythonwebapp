@@ -317,3 +317,58 @@ https://pyscript.com/@examples
 1. How to deterime the pyscript specifc HTML attributes like `py-click` and `py-submit` ?
 
 ---
+
+# Multi-page with 2 levels
+
+## Ann Mari's Github site
+https://github.com/AnnMarieW/dash-multi-page-app-demos?tab=readme-ov-file#9-multi_page_nested_folder
+
+
+## Link to the Ann Marie's source code
+https://github.com/AnnMarieW/dash-multi-page-app-demos/blob/main/multi_page_nested_folders/app.py
+
+## Nest pages documentation
+https://dash.plotly.com/urls#nested-pages
+
+---
+# Getting autopep8 right
+
+## Why do we need autopep8 ?
+
+![alt text](docs/images/vscode-extensions-for-python.png)
+
+## What was the problem ?
+The following error message would show up on the DEBUG CONSOLE window
+
+```
+autopep8 client: couldn't create connection to server
+```
+
+
+## What appears to work?
+
+```json
+{
+    "autopep8.interpreter": [],
+    "autopep8.path": [],
+    "autopep8.args": [],
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "ms-python.autopep8"
+    }
+}
+```
+
+# Where did I get help from ?
+
+- Github [page](https://github.com/microsoft/vscode-autopep8) for autopep-8 .(Would not know that autopep8 path and args are neccessary)
+- [Stackoveflow](https://stackoverflow.com/questions/49783700/visual-studio-code-autopep8-doesnt-run)
+
+---
+
+# What next ?
+Do a simple Dash which implements AnnMaris 2 layer multi-page app
+
