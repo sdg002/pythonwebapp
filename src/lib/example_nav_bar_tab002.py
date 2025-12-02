@@ -20,7 +20,7 @@ class ExampleNavBarTab002:
         for name, path in top_level_pages:
             logging.info(f"Adding nav link for page {path}")
             nav_item = dbc.NavItem(dbc.NavLink(
-                name, href=path))
+                name, href=path, active="exact"))
             nav_bar_links.append(nav_item)
         # for page in dash.page_registry.values():
         #     logging.info(f"Found dash page {page['path']}")
