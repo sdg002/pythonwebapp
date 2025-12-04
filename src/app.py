@@ -16,6 +16,7 @@ from blue_print_views.formpostback import form_post_back
 from blue_print_views.plotlyadvanced import plotly_advanced_blue_print
 from blue_print_views.plotlydemosubplots import plotly_subplot_blue_print
 from blue_print_views.webassembly import web_assembly_blue_print
+from blue_print_views.api import api_blueprint
 
 
 def create_flask_app() -> Flask:
@@ -34,6 +35,7 @@ def register_blue_prints(flask_app: Flask):
     flask_app.register_blueprint(form_post_back)
     flask_app.register_blueprint(plotly_advanced_blue_print)
     flask_app.register_blueprint(plotly_subplot_blue_print)
+    flask_app.register_blueprint(api_blueprint)
     flask_app.register_blueprint(cache_test_blue_print)
     flask_app.register_blueprint(web_assembly_blue_print)
     logging.info("All blueprints registered")

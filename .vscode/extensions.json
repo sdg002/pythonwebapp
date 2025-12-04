@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "ms-python.autopep8",
+        "ms-python.debugpy",
+        "ms-python.pylint",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.vscode-python-envs",
+        "docsmsft.docs-markdown",
+        "wibblemonkey.markdown-auto-toc"
+    ]
+}
