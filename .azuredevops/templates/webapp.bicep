@@ -99,7 +99,7 @@ resource sites_sau00123_name_web 'Microsoft.Web/sites/config@2024-04-01' = {
       'hostingstart.html'
     ]
     netFrameworkVersion: 'v4.0'
-    linuxFxVersion: 'PYTHON|3.10'
+    linuxFxVersion: 'PYTHON|3.12'
     requestTracingEnabled: false
     remoteDebuggingEnabled: false
     remoteDebuggingVersion: 'VS2022'
