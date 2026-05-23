@@ -20,5 +20,6 @@
         "editor.defaultFormatter": "ms-python.autopep8"
     },
     "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python",
-    "python.terminal.activateEnvironment": true
+    "python.terminal.activateEnvironment": true,
+    "markdown.showToolbar": true
 }
