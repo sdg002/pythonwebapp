@@ -80,4 +80,4 @@ Add .venv if not already present, and commit `pyproject.toml` and `uv.lock` inst
 
 1. Created a file `.python-version`
 1. Create a file `pyproject.toml`
-1.
+1. Added dependencies. This produced a `uv.lock` file
