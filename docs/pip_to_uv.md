@@ -127,3 +127,28 @@ Replacing 8 lines with 11 lines in [](file:///c%3A/Users/saurabhd/MyTrials/Pytho
 | Dev dependencies could accidentally slip in        | `--no-dev` excludes pytest and other dev tools        |
 
 `--no-hashes` is used because Azure's Oryx pip install doesn't support hash-pinned requirements. Oryx still reads the generated requirements.txt from the src folder and installs it as before.
+
+---
+
+# Why do we need the file .python-version ?
+
+Response from copilot below:
+
+Good question. With uv, `requires-python = ">=3.12"` in pyproject.toml sets a **minimum version constraint** — it tells uv "any Python 3.12 or higher is acceptable", but it doesn't pin an exact version.
+
+.python-version tells uv **exactly which version to use** when creating the venv (e.g., `3.12.9` vs `3.13.1`).
+
+**In practice with uv:**
+
+- If you have `requires-python = ">=3.12"` and no .python-version, uv picks whatever Python it finds that satisfies the constraint — which could vary between machines and CI agents.
+- If you add `.python-version = 3.12`, uv will always use Python 3.12.x specifically.
+
+**For this project, you likely don't need it** because:
+
+- Your `requires-python = ">=3.12"` already constrains the version
+- Your CI explicitly installs Python 3.12 via `UsePythonVersion@0`
+- uv will use that installed Python automatically in CI
+
+.python-version adds value mainly when developers have multiple Python versions installed locally (via pyenv/asdf) and you want to enforce exact version consistency across the team.
+
+---
