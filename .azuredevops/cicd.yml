@@ -55,6 +55,15 @@ stages:
               versionSpec: $(PythonVersion)
               addToPath: true
 
+          - script: pip install uv
+            displayName: "Install uv"
+
+          - script: uv sync
+            displayName: "Create virtual environment and install dependencies"
+
+          - script: uv run pytest
+            displayName: "Run tests"
+
           - task: ArchiveFiles@2
             displayName: "Create a ZIP of the Python web app source"
             inputs:
