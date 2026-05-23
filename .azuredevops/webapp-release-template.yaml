@@ -29,4 +29,5 @@ jobs:
           azureSubscription: $(AzureServiceAccount)
           scriptType: pscore
           scriptPath: .azuredevops/deploy.ps1
+          scriptArguments: -PythonVersion $(PythonVersion)
           addSpnToEnvironment: true

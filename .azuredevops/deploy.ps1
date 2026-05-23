@@ -1,3 +1,8 @@
+param(
+    [Parameter(Mandatory = $true)]
+    [string]$PythonVersion
+)
+
 . $PSScriptRoot/commonvariables.ps1
 
 
@@ -58,7 +63,7 @@ if (Test-Path -Path $DotAzureFolder) {
 
 Write-Host "The Python code will be deployed from the location $SourceCodeLocation"
 Push-Location -Path $SourceCodeLocation
-az webapp up --name $Global:WebAppName --runtime "PYTHON:3.10"
+az webapp up --name $Global:WebAppName --runtime "PYTHON:$PythonVersion"
 Pop-Location
 
 Write-Host "Deployment-done"
