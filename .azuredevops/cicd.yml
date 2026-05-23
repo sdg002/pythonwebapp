@@ -29,7 +29,7 @@ variables:
     ${{else}}:
       value: "${{ variables.PreReleaseVersionNumber }}"
   - name: PythonVersion
-    value: 3.9
+    value: 3.12
   - name: AzureServiceAccount
     value: "azure pay as you go demo (sep 21)"
 
@@ -54,6 +54,15 @@ stages:
             inputs:
               versionSpec: $(PythonVersion)
               addToPath: true
+
+          - script: pip install uv
+            displayName: "Install uv"
+
+          - script: uv sync
+            displayName: "Create virtual environment and install dependencies"
+
+          - script: uv run pytest tests
+            displayName: "Run tests"
 
           - task: ArchiveFiles@2
             displayName: "Create a ZIP of the Python web app source"

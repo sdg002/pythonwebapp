@@ -1,6 +1,7 @@
 param name string
 param hostingPlanName string
 param environment string
+param pythonVersion string
 var location = resourceGroup().location
 
 resource hosting_plan 'Microsoft.Web/sites@2024-04-01' = {
@@ -31,7 +32,7 @@ resource hosting_plan 'Microsoft.Web/sites@2024-04-01' = {
     vnetContentShareEnabled: false
     siteConfig: {
       numberOfWorkers: 1
-      linuxFxVersion: 'PYTHON|3.10'
+      linuxFxVersion: 'PYTHON|${pythonVersion}'
       acrUseManagedIdentityCreds: false
       alwaysOn: false
       http20Enabled: true
@@ -99,7 +100,7 @@ resource sites_sau00123_name_web 'Microsoft.Web/sites/config@2024-04-01' = {
       'hostingstart.html'
     ]
     netFrameworkVersion: 'v4.0'
-    linuxFxVersion: 'PYTHON|3.10'
+    linuxFxVersion: 'PYTHON|${pythonVersion}'
     requestTracingEnabled: false
     remoteDebuggingEnabled: false
     remoteDebuggingVersion: 'VS2022'
