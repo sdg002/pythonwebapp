@@ -73,3 +73,11 @@ Add .venv if not already present, and commit `pyproject.toml` and `uv.lock` inst
 ---
 
 **Note:** You can keep requirements.txt alongside for CI/CD compatibility using `uv export -o requirements.txt --no-hashes`.
+
+---
+
+# What was the outcome ?
+
+1. Created a file `.python-version`
+1. Create a file `pyproject.toml`
+1.
