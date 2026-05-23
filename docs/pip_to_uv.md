@@ -100,3 +100,30 @@ log_cli_level = "INFO"
 That said, you **can** use `uv run pytest tests/` to scope it to the tests directory — that's perfectly fine. The key part is the `uv run` prefix, not the directory argument.
 
 In CI, the safer habit is always `uv run <command>` rather than activating the venv manually and relying on `PATH`.
+
+## How to deploy to Azure Web App when using uv ?
+
+Read [](file:///c%3A/Users/saurabhd/MyTrials/Python/pythonwebapp/.azuredevops/deploy.ps1#1-1), lines 1 to 60
+
+Azure App Service's Oryx build system doesn't natively support uv, so the approach is: **generate a locked requirements.txt from uv.lock using `uv export`, then let Oryx use that** — instead of copying the manually-maintained root requirements.txt.
+
+Changes needed in deploy.ps1:
+
+1. Install uv on the deploy agent
+2. Replace the `Copy-Item requirements.txt` block with `uv export --no-dev`
+
+Replacing 8 lines with 11 lines in [](file:///c%3A/Users/saurabhd/MyTrials/Python/pythonwebapp/.azuredevops/deploy.ps1)
+
+```
+
+```
+
+**What changed and why:**
+
+| Before                                             | After                                                 |
+| -------------------------------------------------- | ----------------------------------------------------- |
+| Copied root requirements.txt (manually maintained) | Runs `uv export --no-dev` to generate it from uv.lock |
+| No guarantee versions were locked                  | Versions are pinned exactly as resolved by uv         |
+| Dev dependencies could accidentally slip in        | `--no-dev` excludes pytest and other dev tools        |
+
+`--no-hashes` is used because Azure's Oryx pip install doesn't support hash-pinned requirements. Oryx still reads the generated requirements.txt from the src folder and installs it as before.
