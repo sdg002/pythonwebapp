@@ -92,3 +92,11 @@ This has to be added manuall
 log_cli = true
 log_cli_level = "INFO"
 ```
+
+## How to run the pytests ?
+
+`uv run pytest` ensures pytest runs inside the uv-managed .venv, using the exact interpreter and packages resolved by uv. Without it, `pytest` would resolve to whatever is on the agent's `PATH`, which may be a different version or missing your project's dependencies entirely.
+
+That said, you **can** use `uv run pytest tests/` to scope it to the tests directory — that's perfectly fine. The key part is the `uv run` prefix, not the directory argument.
+
+In CI, the safer habit is always `uv run <command>` rather than activating the venv manually and relying on `PATH`.

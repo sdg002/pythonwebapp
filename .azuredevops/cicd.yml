@@ -61,7 +61,7 @@ stages:
           - script: uv sync
             displayName: "Create virtual environment and install dependencies"
 
-          - script: uv run pytest
+          - script: uv run pytest tests
             displayName: "Run tests"
 
           - task: ArchiveFiles@2
