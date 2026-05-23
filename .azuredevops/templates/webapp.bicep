@@ -31,7 +31,7 @@ resource hosting_plan 'Microsoft.Web/sites@2024-04-01' = {
     vnetContentShareEnabled: false
     siteConfig: {
       numberOfWorkers: 1
-      linuxFxVersion: 'PYTHON|3.10'
+      linuxFxVersion: 'PYTHON|3.12'
       acrUseManagedIdentityCreds: false
       alwaysOn: false
       http20Enabled: true
