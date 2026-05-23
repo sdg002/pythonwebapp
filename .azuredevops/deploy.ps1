@@ -52,9 +52,12 @@ $SourceFolder = "src"
 $SourceCodeLocation = Join-Path -Path $PSScriptRoot -ChildPath "../$SourceFolder"
 $SourceCodeLocation = Resolve-Path -Path $SourceCodeLocation
 Write-Host "Source code location: $SourceCodeLocation"
-$Requirements = Join-Path -Path $SourceCodeLocation -ChildPath "../requirements.txt"
-Copy-item -Path $Requirements -Destination $SourceCodeLocation -Force -Verbose
-Write-Host "Copied requirements.txt to $SourceCodeLocation because Azure Web App deployment will build the Python environment"
+
+Write-Host "Installing uv to generate locked requirements.txt from uv.lock"
+pip install uv --quiet
+$RequirementsDestination = Join-Path -Path $SourceCodeLocation -ChildPath "requirements.txt"
+uv export --no-dev --no-hashes -o $RequirementsDestination
+Write-Host "Generated locked requirements.txt at $RequirementsDestination using uv export"
 
 $DotAzureFolder = Join-Path -Path $SourceCodeLocation -ChildPath ".azure"  #This is a cache folder created by Azure Cli created on local desktops
 if (Test-Path -Path $DotAzureFolder) {
