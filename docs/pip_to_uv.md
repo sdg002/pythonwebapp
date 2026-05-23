@@ -81,3 +81,14 @@ Add .venv if not already present, and commit `pyproject.toml` and `uv.lock` inst
 1. Created a file `.python-version`
 1. Create a file `pyproject.toml`
 1. Added dependencies. This produced a `uv.lock` file
+1. Adding pytest `uv add --dev pytest`
+
+## Configure logging of pytests
+
+This has to be added manuall
+
+```
+[tool.pytest.ini_options]
+log_cli = true
+log_cli_level = "INFO"
+```

@@ -29,7 +29,7 @@ variables:
     ${{else}}:
       value: "${{ variables.PreReleaseVersionNumber }}"
   - name: PythonVersion
-    value: 3.9
+    value: 3.12
   - name: AzureServiceAccount
     value: "azure pay as you go demo (sep 21)"
 
