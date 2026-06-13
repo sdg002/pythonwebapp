@@ -13,17 +13,22 @@ def layout():
     logging.info('Page handler:{__name__}')
     x_values = list(range(1, 11))
     y_values = [random.randint(10, 100) for _ in x_values]
+    theme_name = 'plotly_dark'
 
     figure = go.Figure(
         data=[go.Scatter(x=x_values, y=y_values,
                          mode='lines+markers', name='Random values')]
     )
-    figure.update_layout(title='Simple Plotly Line Chart',
-                         xaxis_title='X', yaxis_title='Y')
+    figure.update_layout(
+        title='Simple Plotly Line Chart',
+        xaxis_title='X',
+        yaxis_title='Y',
+        template=theme_name,
+    )
 
     html_elements = html.Div([
         html.H1('This is our Plotly Themes page'),
-        html.Div('This is our Plotly Themes page content.'),
+        html.Div(f'This chart uses the Plotly theme: {theme_name}.'),
         dcc.Graph(id='random-line-chart', figure=figure),
         html.A('Go back to the landing page', href='/'),
     ])
