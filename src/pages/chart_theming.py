@@ -62,14 +62,18 @@ def layout():
             'When you pick a new theme, the chart updates immediately with the selected template.'
         ),
         html.Hr(),
-        html.Div('Choose a Plotly theme from the dropdown.'),
-        dcc.Dropdown(
-            options=[{'label': theme, 'value': theme}
-                     for theme in THEME_OPTIONS],
-            value=theme_name,
-            id='theme-dropdown',
-            clearable=False,
-        ),
+        html.Div([
+            html.Span('Choose a Plotly theme from the dropdown.'),
+            dcc.Dropdown(
+                options=[{'label': theme, 'value': theme}
+                         for theme in THEME_OPTIONS],
+                value=theme_name,
+                id='theme-dropdown',
+                clearable=False,
+                style={'width': '220px'},
+            ),
+        ], style={'display': 'flex', 'alignItems': 'center', 'gap': '0.75rem'}),
+        html.Hr(),
         html.Div(
             f'This chart uses the Plotly theme: {theme_name}.', id='selected-theme-name'),
         dcc.Graph(id='random-line-chart', figure=build_figure(theme_name)),
