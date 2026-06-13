@@ -4,6 +4,28 @@ import random
 import dash
 from dash import dcc, html
 import plotly.graph_objs as go
+import plotly.io as pio
+
+CUSTOM_THEME_NAME = 'custom_blue_slate'
+
+
+def register_custom_theme() -> None:
+    custom_theme = go.layout.Template(
+        layout=go.Layout(
+            paper_bgcolor='#f7fafc',
+            plot_bgcolor='#ffffff',
+            font={'family': 'Verdana, sans-serif',
+                  'size': 14, 'color': '#1f2937'},
+            title={'font': {'size': 22, 'color': '#0f172a'}},
+            xaxis={'gridcolor': '#dbe3ef', 'zerolinecolor': '#c5d0e0'},
+            yaxis={'gridcolor': '#dbe3ef', 'zerolinecolor': '#c5d0e0'},
+            colorway=['#2563eb', '#dc2626', '#16a34a', '#d97706', '#7c3aed'],
+        )
+    )
+    pio.templates[CUSTOM_THEME_NAME] = custom_theme
+
+
+register_custom_theme()
 
 THEME_OPTIONS = [
     'plotly',
@@ -15,6 +37,7 @@ THEME_OPTIONS = [
     'presentation',
     'xgridoff',
     'ygridoff',
+    CUSTOM_THEME_NAME,
 ]
 
 dash.register_page(__name__, path='/plotlythemes',
