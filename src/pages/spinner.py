@@ -34,8 +34,14 @@ def layout():
     Input("spinner-start-button", "n_clicks")
 )
 def update_output(n_clicks):
-    logging.info(f"Inside update_output {n_clicks}")
+    logging.info(f"Inside update_output call back {n_clicks}")
     if n_clicks > 0:
+        start_time = time.time()  # Record the start time
         time.sleep(LONG_OPERATION_TIME)  # Simulate a long operation
-        return "Operation Complete!"
-    return "Click the button to start the operation."
+        end_time = time.time()  # Record the end time
+        elapsed_time = end_time - start_time  # Calculate elapsed time
+        return html.Div([
+            html.H4("Long operation completed!"),
+            html.P(f"Operation took {elapsed_time:.2f} seconds.")
+        ])
+    return ""
